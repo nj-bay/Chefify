@@ -10,3 +10,4 @@ class ChefifyUser(User):
     menu = models.ForeignKey(Menu, null=True)
     class Meta:
         abstract = True
+

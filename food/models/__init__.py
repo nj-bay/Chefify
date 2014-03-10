@@ -6,6 +6,5 @@ from Customer import Customer
 from DishType import DishType
 from EventType import EventType
 from Menu import Menu
-from Status import Status
 from Location import Location
 from Dish import Dish

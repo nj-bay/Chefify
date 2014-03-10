@@ -7,4 +7,6 @@ class Customer(ChefifyUser):
      class Meta:
         app_label = 'food'
 
+     def __unicode__(self):
+        return self.username
 

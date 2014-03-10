@@ -8,130 +8,27 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'EventType'
-        db.create_table(u'food_eventtype', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('type', self.gf('django.db.models.fields.CharField')(max_length=100)),
-        ))
-        db.send_create_signal('food', ['EventType'])
+        # Deleting field 'DishType.type'
+        db.delete_column(u'food_dishtype', 'type')
 
-        # Adding model 'Cuisine'
-        db.create_table(u'food_cuisine', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('type', self.gf('django.db.models.fields.CharField')(max_length=100)),
-        ))
-        db.send_create_signal('food', ['Cuisine'])
-
-        # Adding model 'DishType'
-        db.create_table(u'food_dishtype', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('type', self.gf('django.db.models.fields.CharField')(max_length=100)),
-        ))
-        db.send_create_signal('food', ['DishType'])
-
-        # Adding model 'Dish'
-        db.create_table(u'food_dish', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.DishType'])),
-        ))
-        db.send_create_signal('food', ['Dish'])
-
-        # Adding model 'Menu'
-        db.create_table(u'food_menu', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('cuisine', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Cuisine'])),
-        ))
-        db.send_create_signal('food', ['Menu'])
-
-        # Adding M2M table for field dishes on 'Menu'
-        m2m_table_name = db.shorten_name(u'food_menu_dishes')
-        db.create_table(m2m_table_name, (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('menu', models.ForeignKey(orm['food.menu'], null=False)),
-            ('dish', models.ForeignKey(orm['food.dish'], null=False))
-        ))
-        db.create_unique(m2m_table_name, ['menu_id', 'dish_id'])
-
-        # Adding model 'Chef'
-        db.create_table(u'food_chef', (
-            (u'user_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
-            ('menu', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Menu'], null=True)),
-            ('price_minimum', self.gf('django.db.models.fields.DecimalField')(default='0', null=True, max_digits=8, decimal_places=2)),
-            ('price_maximum', self.gf('django.db.models.fields.DecimalField')(default='0', null=True, max_digits=8, decimal_places=2)),
-            ('has_equipment', self.gf('django.db.models.fields.BooleanField')()),
-            ('equipment_charge', self.gf('django.db.models.fields.PositiveIntegerField')()),
-            ('travel_radius', self.gf('django.db.models.fields.PositiveIntegerField')()),
-        ))
-        db.send_create_signal('food', ['Chef'])
-
-        # Adding model 'Customer'
-        db.create_table(u'food_customer', (
-            (u'user_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
-            ('menu', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Menu'], null=True)),
-        ))
-        db.send_create_signal('food', ['Customer'])
-
-        # Adding model 'Location'
-        db.create_table(u'food_location', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('address', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('city', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('state', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('zip_code', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('latitude', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=9, decimal_places=6)),
-            ('longitude', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=9, decimal_places=6)),
-        ))
-        db.send_create_signal('food', ['Location'])
-
-        # Adding model 'Appointments'
-        db.create_table(u'food_appointments', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('chef', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Chef'], null=True)),
-            ('customer', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Customer'])),
-            ('ratings', self.gf('django.db.models.fields.PositiveIntegerField')(null=True)),
-            ('start_time', self.gf('django.db.models.fields.DateTimeField')()),
-            ('end_time', self.gf('django.db.models.fields.DateTimeField')()),
-            ('number_of_guests', self.gf('django.db.models.fields.PositiveSmallIntegerField')()),
-            ('event_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.EventType'])),
-            ('has_menu', self.gf('django.db.models.fields.BooleanField')()),
-            ('menu', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Menu'])),
-            ('status', self.gf('django.db.models.fields.PositiveSmallIntegerField')(null=True)),
-            ('location', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Location'])),
-        ))
-        db.send_create_signal('food', ['Appointments'])
+        # Adding field 'DishType.name'
+        db.add_column(u'food_dishtype', 'name',
+                      self.gf('django.db.models.fields.CharField')(default=None, max_length=100),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'EventType'
-        db.delete_table(u'food_eventtype')
 
-        # Deleting model 'Cuisine'
-        db.delete_table(u'food_cuisine')
+        # User chose to not deal with backwards NULL issues for 'DishType.type'
+        raise RuntimeError("Cannot reverse this migration. 'DishType.type' and its values cannot be restored.")
+        
+        # The following code is provided here to aid in writing a correct migration        # Adding field 'DishType.type'
+        db.add_column(u'food_dishtype', 'type',
+                      self.gf('django.db.models.fields.CharField')(max_length=100),
+                      keep_default=False)
 
-        # Deleting model 'DishType'
-        db.delete_table(u'food_dishtype')
-
-        # Deleting model 'Dish'
-        db.delete_table(u'food_dish')
-
-        # Deleting model 'Menu'
-        db.delete_table(u'food_menu')
-
-        # Removing M2M table for field dishes on 'Menu'
-        db.delete_table(db.shorten_name(u'food_menu_dishes'))
-
-        # Deleting model 'Chef'
-        db.delete_table(u'food_chef')
-
-        # Deleting model 'Customer'
-        db.delete_table(u'food_customer')
-
-        # Deleting model 'Location'
-        db.delete_table(u'food_location')
-
-        # Deleting model 'Appointments'
-        db.delete_table(u'food_appointments')
+        # Deleting field 'DishType.name'
+        db.delete_column(u'food_dishtype', 'name')
 
 
     models = {
@@ -215,7 +112,7 @@ class Migration(SchemaMigration):
         'food.dishtype': {
             'Meta': {'object_name': 'DishType'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'type': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         'food.eventtype': {
             'Meta': {'object_name': 'EventType'},
