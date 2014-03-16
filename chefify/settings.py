@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'south',
     'food',
     'tastypie',
+    'chef',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (

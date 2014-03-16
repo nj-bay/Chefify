@@ -1,0 +1,18 @@
+<div class="container">
+
+<h1 class="span12">Chef List</h1>
+
+<ul ng-repeat="chef in chefs" class="span6">
+    <li>
+        <a href="" ng-click="setCurrentChef(chef.email)">{{ chef.first_name }} {{ chef.last_name }} {{ chef.price_minimum }}  {{ chef.email }} </a>
+    </li>
+</ul>
+
+<div class="span5">
+
+    <p>{{ currentChef | json }}</p>
+<!-- It's to put in partials, chef details page code-->
+
+</div>
+
+</div>
