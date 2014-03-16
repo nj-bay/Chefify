@@ -8,11 +8,17 @@
     </li>
 </ul>
 
-<div class="span5">
 
+
+    <ul>
+        <li>Name: {{ currentChef.first_name}} {{ currentChef.first_name }} {{ currentChef.last_name }}</li>
+        <li>Email:  {{ currentChef.email }} </li>
+    </ul>
     <p>{{ currentChef | json }}</p>
-<!-- It's to put in partials, chef details page code-->
 
-</div>
+    <div class="span5" ng-controller="ChefDetailCtrl">
+        <p></p>
+    </div>
+
 
 </div>
