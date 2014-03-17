@@ -4,7 +4,7 @@ from tastypie.bundle import Bundle
 from tastypie.constants import ALL_WITH_RELATIONS, ALL
 from tastypie.fields import ToManyField, CharField, ToOneField
 from tastypie.resources import ModelResource, Resource
-from food.models import Chef, Menu, Cuisine, DishType, Dish
+from food.models import Chef, Menu, Cuisine, DishType, Dish, Appointments, EventType, Location
 
 
 class DishTypeResource(ModelResource):
@@ -59,3 +59,22 @@ class ChefResource(ModelResource):
             'price_minimum': ALL
         }
 
+class EventTypeResource(ModelResource):
+    class Meta:
+        queryset = EventType.objects.all()
+        resource_name = 'event_type'
+
+class LocationResource(ModelResource):
+    class Meta:
+        queryset = Location.objects.all()
+        resource_name = 'location'
+        authorization = Authorization()
+
+
+class AppointmentsResource(ModelResource):
+    chef = ToOneField(ChefResource, 'chef', full=True)
+    event_type = ToOneField(EventTypeResource, 'event_type', full=True)
+    location = ToOneField(LocationResource, 'location', full=True)
+    class Meta:
+        queryset = Appointments.objects.all()
+        resource_name = 'appointments'

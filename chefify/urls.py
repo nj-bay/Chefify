@@ -3,7 +3,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 import registration
 from tastypie.api import Api
-from food.api.resources import ChefResource, DishTypeResource, DishResource, CuisineResource, MenuResource
+from food.api.resources import ChefResource, DishTypeResource, DishResource, CuisineResource, MenuResource, \
+    AppointmentsResource, LocationResource
 
 from django.contrib import admin
 admin.autodiscover()
@@ -14,6 +15,9 @@ v1_api.register(DishTypeResource())
 v1_api.register(DishResource())
 v1_api.register(CuisineResource())
 v1_api.register(MenuResource())
+v1_api.register(AppointmentsResource())
+v1_api.register(LocationResource())
+
 
 
 urlpatterns = patterns('',
