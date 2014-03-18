@@ -1,10 +1,24 @@
 from django.conf import settings
+from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import Authorization
 from tastypie.bundle import Bundle
 from tastypie.constants import ALL_WITH_RELATIONS, ALL
 from tastypie.fields import ToManyField, CharField, ToOneField
 from tastypie.resources import ModelResource, Resource
-from food.models import Chef, Menu, Cuisine, DishType, Dish, Appointments, EventType, Location
+from food.api.authorization import CustomerObjectsOnlyAuthorization
+from food.models import Chef, Menu, Cuisine, DishType, Dish, Appointments, EventType, Location, ChefifyUser, Customer
+
+
+class ChefifyUserResource(ModelResource):
+    class Meta:
+        queryset = ChefifyUser.objects.all()
+        resource_name = 'chefify_user'
+
+
+class CustomerResource(ModelResource):
+    class Meta:
+        queryset = Customer.objects.all()
+        resource_name = 'customer'
 
 
 class DishTypeResource(ModelResource):
@@ -50,7 +64,9 @@ class MenuResource(ModelResource):
 
 
 class ChefResource(ModelResource):
-    menu = ToOneField(MenuResource, 'menu', full=True)
+    chefify_user = ToOneField(ChefifyUserResource, 'chefify_user', full=True)
+    menu = ToOneField(MenuResource, 'menu', full=True, null=True)
+
     class Meta:
         queryset = Chef.objects.all()
         resource_name = 'chef'
@@ -75,6 +91,11 @@ class AppointmentsResource(ModelResource):
     chef = ToOneField(ChefResource, 'chef', full=True)
     event_type = ToOneField(EventTypeResource, 'event_type', full=True)
     location = ToOneField(LocationResource, 'location', full=True)
+    menu = ToOneField(MenuResource, 'menu', full=True)
+    customer = ToOneField(CustomerResource, 'customer', full=True, blank=True)
+
     class Meta:
         queryset = Appointments.objects.all()
         resource_name = 'appointments'
+        authorization = CustomerObjectsOnlyAuthorization()
+        authentication = BasicAuthentication()

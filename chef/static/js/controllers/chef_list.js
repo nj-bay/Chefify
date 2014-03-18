@@ -20,7 +20,7 @@ function ChefListCtrl($scope, $http) {
      //with map key value
         for(i=0; i < $scope.chefs.length; i++)
         {
-            if($scope.chefs[i].email == email ){
+            if($scope.chefs[i].chefify_user.email == email ){
                 $scope.currentChef = $scope.chefs[i];
 
 

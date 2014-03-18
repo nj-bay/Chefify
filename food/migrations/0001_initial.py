@@ -25,7 +25,7 @@ class Migration(SchemaMigration):
         # Adding model 'DishType'
         db.create_table(u'food_dishtype', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('type', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
         ))
         db.send_create_signal('food', ['DishType'])
 
@@ -34,6 +34,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.DishType'])),
+            ('cuisine', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Cuisine'])),
         ))
         db.send_create_signal('food', ['Dish'])
 
@@ -53,10 +54,45 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['menu_id', 'dish_id'])
 
+        # Adding model 'ChefifyUser'
+        db.create_table(u'food_chefifyuser', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('password', self.gf('django.db.models.fields.CharField')(max_length=128)),
+            ('last_login', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
+            ('is_superuser', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('username', self.gf('django.db.models.fields.CharField')(unique=True, max_length=30)),
+            ('first_name', self.gf('django.db.models.fields.CharField')(max_length=30, blank=True)),
+            ('last_name', self.gf('django.db.models.fields.CharField')(max_length=30, blank=True)),
+            ('email', self.gf('django.db.models.fields.EmailField')(max_length=75, blank=True)),
+            ('is_staff', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('date_joined', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
+            ('menu', self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['food.Menu'], null=True, blank=True)),
+        ))
+        db.send_create_signal('food', ['ChefifyUser'])
+
+        # Adding M2M table for field groups on 'ChefifyUser'
+        m2m_table_name = db.shorten_name(u'food_chefifyuser_groups')
+        db.create_table(m2m_table_name, (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('chefifyuser', models.ForeignKey(orm['food.chefifyuser'], null=False)),
+            ('group', models.ForeignKey(orm[u'auth.group'], null=False))
+        ))
+        db.create_unique(m2m_table_name, ['chefifyuser_id', 'group_id'])
+
+        # Adding M2M table for field user_permissions on 'ChefifyUser'
+        m2m_table_name = db.shorten_name(u'food_chefifyuser_user_permissions')
+        db.create_table(m2m_table_name, (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('chefifyuser', models.ForeignKey(orm['food.chefifyuser'], null=False)),
+            ('permission', models.ForeignKey(orm[u'auth.permission'], null=False))
+        ))
+        db.create_unique(m2m_table_name, ['chefifyuser_id', 'permission_id'])
+
         # Adding model 'Chef'
         db.create_table(u'food_chef', (
-            (u'user_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
-            ('menu', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Menu'], null=True)),
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('chefify_user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['food.ChefifyUser'], unique=True)),
             ('price_minimum', self.gf('django.db.models.fields.DecimalField')(default='0', null=True, max_digits=8, decimal_places=2)),
             ('price_maximum', self.gf('django.db.models.fields.DecimalField')(default='0', null=True, max_digits=8, decimal_places=2)),
             ('has_equipment', self.gf('django.db.models.fields.BooleanField')()),
@@ -67,8 +103,8 @@ class Migration(SchemaMigration):
 
         # Adding model 'Customer'
         db.create_table(u'food_customer', (
-            (u'user_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
-            ('menu', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['food.Menu'], null=True)),
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('chefify_user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['food.ChefifyUser'], unique=True)),
         ))
         db.send_create_signal('food', ['Customer'])
 
@@ -121,6 +157,15 @@ class Migration(SchemaMigration):
         # Removing M2M table for field dishes on 'Menu'
         db.delete_table(db.shorten_name(u'food_menu_dishes'))
 
+        # Deleting model 'ChefifyUser'
+        db.delete_table(u'food_chefifyuser')
+
+        # Removing M2M table for field groups on 'ChefifyUser'
+        db.delete_table(db.shorten_name(u'food_chefifyuser_groups'))
+
+        # Removing M2M table for field user_permissions on 'ChefifyUser'
+        db.delete_table(db.shorten_name(u'food_chefifyuser_user_permissions'))
+
         # Deleting model 'Chef'
         db.delete_table(u'food_chef')
 
@@ -148,22 +193,6 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
-        u'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Group']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Permission']"}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
         u'contenttypes.contenttype': {
             'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
             'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
@@ -188,13 +217,30 @@ class Migration(SchemaMigration):
         },
         'food.chef': {
             'Meta': {'object_name': 'Chef'},
+            'chefify_user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['food.ChefifyUser']", 'unique': 'True'}),
             'equipment_charge': ('django.db.models.fields.PositiveIntegerField', [], {}),
             'has_equipment': ('django.db.models.fields.BooleanField', [], {}),
-            'menu': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['food.Menu']", 'null': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'price_maximum': ('django.db.models.fields.DecimalField', [], {'default': "'0'", 'null': 'True', 'max_digits': '8', 'decimal_places': '2'}),
             'price_minimum': ('django.db.models.fields.DecimalField', [], {'default': "'0'", 'null': 'True', 'max_digits': '8', 'decimal_places': '2'}),
-            'travel_radius': ('django.db.models.fields.PositiveIntegerField', [], {}),
-            u'user_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True', 'primary_key': 'True'})
+            'travel_radius': ('django.db.models.fields.PositiveIntegerField', [], {})
+        },
+        'food.chefifyuser': {
+            'Meta': {'object_name': 'ChefifyUser'},
+            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
+            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
+            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Group']"}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
+            'menu': ('django.db.models.fields.related.ForeignKey', [], {'default': '1', 'to': "orm['food.Menu']", 'null': 'True', 'blank': 'True'}),
+            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
+            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Permission']"}),
+            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
         },
         'food.cuisine': {
             'Meta': {'object_name': 'Cuisine'},
@@ -203,11 +249,12 @@ class Migration(SchemaMigration):
         },
         'food.customer': {
             'Meta': {'object_name': 'Customer'},
-            'menu': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['food.Menu']", 'null': 'True'}),
-            u'user_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True', 'primary_key': 'True'})
+            'chefify_user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['food.ChefifyUser']", 'unique': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         },
         'food.dish': {
             'Meta': {'object_name': 'Dish'},
+            'cuisine': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['food.Cuisine']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['food.DishType']"})
@@ -215,7 +262,7 @@ class Migration(SchemaMigration):
         'food.dishtype': {
             'Meta': {'object_name': 'DishType'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'type': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         'food.eventtype': {
             'Meta': {'object_name': 'EventType'},

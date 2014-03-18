@@ -4,15 +4,15 @@
 
 <ul ng-repeat="chef in chefs" class="span6">
     <li>
-        <a href="" ng-click="setCurrentChef(chef.email)">{{ chef.first_name }} {{ chef.last_name }} {{ chef.price_minimum }}  {{ chef.email }} </a>
+        <a href="" ng-click="setCurrentChef(chef.chefify_user.email)">{{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }} {{ chef.price_minimum }}  {{ chef.chefify_user.email }} </a>
     </li>
 </ul>
 
 
 
     <ul>
-        <li>Name: {{ currentChef.first_name}} {{ currentChef.first_name }} {{ currentChef.last_name }}</li>
-        <li>Email:  {{ currentChef.email }} </li>
+        <li>Name: {{ currentChef.chefify_user.first_name}} {{ currentChef.chefify_user.last_name }}</li>
+        <li>Email:  {{ currentChef.chefify_user.email }} </li>
     </ul>
     <p>{{ currentChef | json }}</p>
 

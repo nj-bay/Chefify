@@ -4,7 +4,7 @@ from django.contrib import admin
 import registration
 from tastypie.api import Api
 from food.api.resources import ChefResource, DishTypeResource, DishResource, CuisineResource, MenuResource, \
-    AppointmentsResource, LocationResource
+    AppointmentsResource, LocationResource, EventTypeResource, CustomerResource
 
 from django.contrib import admin
 admin.autodiscover()
@@ -17,6 +17,8 @@ v1_api.register(CuisineResource())
 v1_api.register(MenuResource())
 v1_api.register(AppointmentsResource())
 v1_api.register(LocationResource())
+v1_api.register(EventTypeResource())
+v1_api.register(CustomerResource())
 
 
 
@@ -31,7 +33,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 
 #     url(r'^index', 'food.views.index', name='angular'), for views in food
 )
