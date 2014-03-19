@@ -4,16 +4,25 @@
 <html>
 <head>
     <!-- jQuery -->
-    <script type="text/javascript" src="{%  static 'js/vendor/jquery-1.10.min.js' %}"></script>
+{#    <script type="text/javascript" src="{%  static 'js/vendor/jquery-1.10.min.js' %}"></script>#}
 
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-animate.min.js"></script>
+    <script src="//rawgithub.com/mgcrea/angular-strap/master/dist/angular-strap.min.js"></script>
+    <script src="//rawgithub.com/mgcrea/angular-strap/master/dist/angular-strap.tpl.min.js"></script>
+{#    <script src="{% static 'css/bower_components/angular-strap/dist/angular-strap.min.js' %}"></script>#}
+{#    <script src="{% static 'css/bower_components/angular-strap/dist/angular-strap.tpl.min.js' %}"></script>#}
+
+{##}
     <link rel="stylesheet" href="{%  static 'css/bootstrap.css' %}"/>
     <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}"/>
     <link rel="stylesheet" href="{%  static 'css/bootstrap-responsive.css' %}"/>
     <link rel="stylesheet" href="{%  static 'css/bootstrap-responsive.min.css' %}"/>
-    <!-- Angular -->
-    <script type="text/javascript" src="{%  static 'js/vendor/angular.js' %}"></script>
-    <script type="text/javascript" src="{%  static 'js/vendor/angular-route.js' %}"></script>
-    <script type="text/javascript" src="{%  static 'js/vendor/angular-resource.js' %}"></script>
+{#    <!-- Angular -->#}
+{#    <script type="text/javascript" src="{%  static 'js/vendor/angular.js' %}"></script>#}
+{#    <script type="text/javascript" src="{%  static 'js/vendor/angular-route.js' %}"></script>#}
+{#    <script type="text/javascript" src="{%  static 'js/vendor/angular-resource.js' %}"></script>#}
 
     <!-- Apps -->
     <script type="text/javascript" src="{%  static 'js/app.js' %}"></script>
@@ -25,9 +34,21 @@
 
 </head>
 <body>
-    <h1>Chef Time</h1>
+    <h1>The Chefery</h1>
     <div ng-app="chef">
         <div ng-view></div>
    </div>
+
+    <div class="navbar" bs-navbar>
+        <div class="navbar-inner">
+            <a class="brand" href="#">Title</a>
+            <ul class="nav">
+                 <!-- You can use regular expressions -->
+                <li data-match-route="/(:?navbar)"><a href="#/navbar">Home</a></li>
+                <li data-match-route="/page-one"><a href="#/page-one">Page One</a></li>
+                <li data-match-route="/page-two.*"><a href="#/page-two/sub-a">Page Two</a></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

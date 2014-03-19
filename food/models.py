@@ -53,6 +53,8 @@ class Chef(models.Model):
     has_equipment = models.BooleanField()
     equipment_charge = models.PositiveIntegerField()
     travel_radius = models.PositiveIntegerField()
+    restaurant = models.CharField(max_length=100, null=True)
+    cuisine = models.ManyToManyField(Cuisine, null=True, related_name='chefs')
 
     def __unicode__(self):
         return self.chefify_user.username

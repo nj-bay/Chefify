@@ -1,11 +1,6 @@
-/**
- * Created by nealshultz on 3/13/14.
- */
-/**
- * Created by nealshultz on 3/12/14.
- */
 
-/* create submitForm funciton */
+
+/* create submitForm function */
 
 
 function ChefListCtrl($scope, $http) {
@@ -15,6 +10,8 @@ function ChefListCtrl($scope, $http) {
         });
 
     $scope.currentChef = null;
+
+    $scope.appointment = {};
 
     $scope.setCurrentChef = function(email){
      //with map key value
@@ -32,6 +29,4 @@ function ChefListCtrl($scope, $http) {
     };
 
 //    $scope.chefURL = "views/partials/chef_detail.html";
-}/**
- * Created by nealshultz on 3/13/14.
- */
+}

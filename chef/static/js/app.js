@@ -4,7 +4,7 @@
 /**
  * Created by nealshultz on 3/12/14.
  */
-var chef = angular.module('chef', ['ngRoute']);
+var chef = angular.module('chef', ['ngRoute', 'ngAnimate',  'mgcrea.ngStrap', 'mgcrea.ngStrap.modal']);
 
 chef.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
