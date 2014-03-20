@@ -103,9 +103,9 @@ class Appointments(models.Model):
     number_of_guests = models.PositiveSmallIntegerField()
     event_type = models.ForeignKey(EventType)
     has_menu = models.BooleanField()
-    menu = models.ForeignKey(Menu)
+    menu = models.ForeignKey(Menu, null=True, blank=True)
     status = models.PositiveSmallIntegerField(null=True, blank=True)
-    location = models.ForeignKey(Location)
+    location = models.ForeignKey(Location, null=True, blank=True)
 
 
     def __unicode__(self):

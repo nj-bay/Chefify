@@ -90,8 +90,8 @@ class LocationResource(ModelResource):
 class AppointmentsResource(ModelResource):
     chef = ToOneField(ChefResource, 'chef', full=True)
     event_type = ToOneField(EventTypeResource, 'event_type', full=True)
-    location = ToOneField(LocationResource, 'location', full=True)
-    menu = ToOneField(MenuResource, 'menu', full=True)
+    location = ToOneField(LocationResource, 'location', full=True, null=True)
+    menu = ToOneField(MenuResource, 'menu', full=True, null=True)
     customer = ToOneField(CustomerResource, 'customer', full=True, blank=True)
 
     class Meta:

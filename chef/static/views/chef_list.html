@@ -8,18 +8,20 @@
     </li>
 </ul>
 
+<div ng-hide="currentChef.chefify_user.email">
+    <h3>Click the link and pick your chef</h3>
+</div>
 
-
+<div ng-show="currentChef.chefify_user.email">
     <ul>
         <li>Name: {{ currentChef.chefify_user.first_name}} {{ currentChef.chefify_user.last_name }}</li>
         <li>Email:  {{ currentChef.chefify_user.email }} </li>
     </ul>
     <p>{{ currentChef | json }}</p>
 
-  <button type="button" class="btn btn-lg btn-danger" data-content-template="/static/views/modal.html" bs-modal="modal">
-    Custom Modal
-    <br>
-    <small>(using data-template)</small>
- </button>
+    <button type="button" class="btn btn-lg btn-danger" data-content-template="/static/views/modal.html" bs-modal="modal">
+        Reservation
+    </button>
+ </div>
 
 </div>

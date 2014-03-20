@@ -3,7 +3,7 @@
 /* create submitForm function */
 
 
-function ChefListCtrl($scope, $http) {
+function ChefListCtrl($scope, $http, $location) {
     $http.get('/api/v1/chef/?format=json').
         success(function(chefs) {
             $scope.chefs = chefs.objects;
@@ -27,6 +27,18 @@ function ChefListCtrl($scope, $http) {
 
         }
     };
+
+     $scope.submitForm = function() {
+        $http.post('/api/v1/appointments/?format=json', $scope.appointment).
+            success(function(response){
+                $location.path("/");
+            })
+    }
+
+     $http.get('/api/v1/event_type/?format=json').
+        success(function(event_types){
+            $scope.event_types = event_types.objects;
+        });
 
 //    $scope.chefURL = "views/partials/chef_detail.html";
 }
