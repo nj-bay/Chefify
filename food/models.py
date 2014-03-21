@@ -1,5 +1,5 @@
 from decimal import Decimal
-from django.contrib.auth.models import AbstractUser, UserManager
+from django.contrib.auth.models import AbstractUser, UserManager, User
 from django.db import models
 from django.db.models.signals import post_save
 
@@ -55,7 +55,6 @@ class Chef(models.Model):
     travel_radius = models.PositiveIntegerField()
     restaurant = models.CharField(max_length=100, null=True)
     cuisine = models.ManyToManyField(Cuisine, null=True, related_name='chefs')
-
     def __unicode__(self):
         return self.chefify_user.username
 
