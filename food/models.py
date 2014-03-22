@@ -103,9 +103,21 @@ class Appointments(models.Model):
     event_type = models.ForeignKey(EventType)
     has_menu = models.BooleanField()
     menu = models.ForeignKey(Menu, null=True, blank=True)
-    status = models.PositiveSmallIntegerField(null=True, blank=True)
     location = models.ForeignKey(Location, null=True, blank=True)
-
+    COMPLETED = 300
+    ACCEPTED = 200
+    PENDING = 100
+    DECLINED = 50
+    status_choices = (
+        (COMPLETED, 'Completed'),
+        (ACCEPTED, 'Accepted'),
+        (PENDING, 'Pending'),
+        (DECLINED, 'Declined'),
+    )
+    status = models.IntegerField(max_length=4,
+                                 choices=status_choices,
+                                 null=True
+                                 )
 
     def __unicode__(self):
         return "{0}: {1}".format(self.customer, self.event_type)

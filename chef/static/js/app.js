@@ -11,6 +11,6 @@ chef.config(['$routeProvider', function($routeProvider) {
         when('/', {templateUrl: '/static/views/index.html', controller: IndexCtrl}).
         when('/chef_list', {templateUrl: '/static/views/chef_list.html', controller: ChefListCtrl}).
         when('/add_location', {templateUrl: '/static/views/add_location.html', controller: AddLocationCtrl}).
-        when('/my_account/:chef_id', {templateUrl: '/static/views/my_account.html', controller: MyAccountCtrl}).
+        when('/my_account/:user_id', {templateUrl: '/static/views/my_account.html', controller: MyAccountCtrl}).
         otherwise({redirectTo: '/'});
 }]);

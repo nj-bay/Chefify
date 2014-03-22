@@ -70,8 +70,15 @@ function ChefListCtrl($scope, $http, $location) {
 
 function MyAccountCtrl($scope, $http, $routeParams) {
 
-    $http.get('/api/v1/chef/'+ $routeParams.chef_id+ '/?format=json').
-        success(function(chef) {
-            $scope.chef = chef;
+    $http.get('/api/v1/chefify_user/'+ $routeParams.user_id + '/?format=json').
+        success(function(user) {
+            $scope.user = user;
         });
+
+    //
+    $http.get('/api/v1/appointments/?format=json').
+        success(function(appointments) {
+            $scope.appointments = appointments.objects;
+        });
+
 }

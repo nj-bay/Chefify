@@ -66,6 +66,7 @@ class MenuResource(ModelResource):
 class ChefResource(ModelResource):
     chefify_user = ToOneField(ChefifyUserResource, 'chefify_user', full=True)
     menu = ToOneField(MenuResource, 'menu', full=True, null=True)
+    cuisine = ToManyField(CuisineResource,'cuisine', full=True, null=True)
 
     class Meta:
         queryset = Chef.objects.all()

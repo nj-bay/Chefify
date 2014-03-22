@@ -3,7 +3,7 @@ from django.contrib import admin
 import registration
 from tastypie.api import Api
 from food.api.resources import ChefResource, DishTypeResource, DishResource, CuisineResource, MenuResource, \
-    AppointmentsResource, LocationResource, EventTypeResource, CustomerResource
+    AppointmentsResource, LocationResource, EventTypeResource, CustomerResource, ChefifyUserResource
 
 from django.contrib import admin
 admin.autodiscover()
@@ -18,6 +18,7 @@ v1_api.register(AppointmentsResource())
 v1_api.register(LocationResource())
 v1_api.register(EventTypeResource())
 v1_api.register(CustomerResource())
+v1_api.register(ChefifyUserResource())
 
 
 

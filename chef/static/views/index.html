@@ -1,10 +1,36 @@
 <div class="container">
 
-<h3>Index Page</h3>
+    <h3>Index Page</h3>
+
     <div class="slideshow">
         <h2>Slideshow</h2>
+
         <div class="search">
-            <h3>Search Function</h3>
+            <div class="controls controls-row" ng-model="search">
+                <input type="text" class="input-xlarge" placeholder="Search for Chefs by Name"
+                       ng-model="search.first_name"/>
+                <input type="text" class="input-xlarge" placeholder="Search for Chefs by Cuisine"
+                       ng-model="search.cuisine"/>
+            </div>
+        </div>
+
+        <div class="searchResult" ng-show="search">
+            <h3>Search Result</h3>
+            <ul ng-repeat="chef in chefs | filter:search.first_name" class="span6" ng-show="search.first_name">
+                <li>
+                    <a href=""
+                       ng-click="setCurrentChef(chef.chefify_user.email)">{{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }} </a> | {{ chef.cuisine[0].type }} | {{ chef.price_minimum }}
+                </li>
+            </ul>
+
+            <ul ng-repeat="chef in chefs | filter:search.cuisine" class="span6" ng-show="search.cuisine">
+                <li>
+                    <a href=""
+                       ng-click="setCurrentChef(chef.chefify_user.email)">{{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }} </a> | {{ chef.cuisine[0].type }} | {{ chef.price_minimum }}
+                </li>
+            </ul>
+
+
         </div>
     </div>
 </div>
