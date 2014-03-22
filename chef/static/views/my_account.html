@@ -1,17 +1,22 @@
+
+
 <div class="container">
 
-    <h1 class="span12">Chef Profile</h1>
+    <h1 class="span12">User Profile</h1>
 
 
     <div class="span5">
         <img src="../static/image/Chef_{{ user.id }}.jpeg" alt=""/>
     </div>
+
     <h3>My Account info</h3>
 
-   {{ user | json }}
+    {{ user | json }}
 
+<button ng-hide="user.is_chef" ng-click="">Register as a Chef</button>
 
-
+<div class="chef_info" ng-show="user.is_chef">
+    <h3>Chef Information</h3>
     <div class="span6">
         <ul>
             <li><a href="#">Add a Menu</a></li>
@@ -23,10 +28,15 @@
     <div class="myAppointment">
         <h3>My Appointments</h3>
 
-           <ul ng-repeat="appointment in appointments" class="span6">
+           <ul ng-repeat="appointment in appointments | filter:user.email" class="span6">
                 <li>
+                    {{ appointment.chef.chefify_user.id }}
                     {{ appointment.customer.id }} | {{ appointment.number_of_guests }} | {{ appointment.location.address }} | {{ appointment.start_time | date:'short'}}
                 </li>
            </ul>
     </div>
+
+</div>
+
+
 </div>

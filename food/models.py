@@ -39,6 +39,8 @@ class ChefifyUser(AbstractUser):
     """
     menu = models.ForeignKey(Menu, null=True, blank=True)
 
+    is_chef = models.BooleanField(default=False)
+
     objects = UserManager()
 
     def get_absolute_url(self):
