@@ -106,19 +106,19 @@ class Appointments(models.Model):
     has_menu = models.BooleanField()
     menu = models.ForeignKey(Menu, null=True, blank=True)
     location = models.ForeignKey(Location, null=True, blank=True)
-    COMPLETED = 300
-    ACCEPTED = 200
-    PENDING = 100
-    DECLINED = 50
+    COMPLETED = 'CO'
+    ACCEPTED = 'AC'
+    PENDING = 'PE'
+    DECLINED = 'DE'
     status_choices = (
         (COMPLETED, 'Completed'),
         (ACCEPTED, 'Accepted'),
         (PENDING, 'Pending'),
         (DECLINED, 'Declined'),
     )
-    status = models.IntegerField(max_length=4,
+    status = models.CharField(max_length=2,
                                  choices=status_choices,
-                                 null=True
+                                 default=PENDING
                                  )
 
     def __unicode__(self):
