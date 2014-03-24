@@ -31,7 +31,11 @@ class Menu(models.Model):
     dishes = models.ManyToManyField(Dish)
 
     def __unicode__(self):
-        return "{0}".format(self.cuisine)
+        dishes = ""
+        for dish in self.dishes.all():
+            dishes += dish.name + " "
+
+        return "{0} - {1}".format(self.cuisine, dishes)
 
 
 class ChefifyUser(AbstractUser):

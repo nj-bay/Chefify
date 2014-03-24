@@ -75,14 +75,14 @@ function MyAccountCtrl($scope, $http, $routeParams) {
             $scope.user = user;
         });
 
-    //
+
     $http.get('/api/v1/appointments/?format=json').
         success(function(appointments) {
             $scope.appointments = appointments.objects;
 
         });
 
-    $scope.choices = [{ option : "CO", name : "Completed"}];
+    $scope.choices = [{ option : "CO", name : "Completed"}, { option : "AC", name : "Accepted"}, { option : "PE", name : "Pending"}, { option : "DE", name : "Declined"}];
     $scope.choice = $scope.choices[0];
 
 

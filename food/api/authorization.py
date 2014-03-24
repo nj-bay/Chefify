@@ -5,10 +5,12 @@ __author__ = 'nealshultz'
 
 class CustomerObjectsOnlyAuthorization(Authorization):
     def read_list(self, object_list, bundle):
-        return object_list.filter(customer=bundle.request.user.customer)
+        # return object_list.filter(customer=bundle.request.user.customer)
+        return object_list
 
     def read_detail(self, object_list, bundle):
-        return bundle.obj.customer == bundle.request.user.customer
+        # return bundle.obj.customer == bundle.request.user.customer
+        return True
 
     def create_list(self, object_list, bundle):
         return object_list

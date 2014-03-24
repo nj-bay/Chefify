@@ -6,6 +6,13 @@
  */
 var chef = angular.module('chef', ['ngRoute', 'ngAnimate',  'mgcrea.ngStrap', 'mgcrea.ngStrap.modal']);
 
+chef.run(function ($http) {
+    $http.defaults.headers.post['X-CSRFToken'] = csrftoken;
+    $http.defaults.headers.put['X-CSRFToken'] = csrftoken;
+    $http.defaults.headers.patch['X-CSRFToken'] = csrftoken;
+    $http.defaults.headers.common['X-CSRFToken'] = csrftoken;
+})
+
 chef.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
         when('/', {templateUrl: '/static/views/index.html', controller: IndexCtrl}).

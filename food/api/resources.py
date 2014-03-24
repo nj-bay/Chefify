@@ -1,5 +1,5 @@
 from django.conf import settings
-from tastypie.authentication import BasicAuthentication
+from tastypie.authentication import BasicAuthentication, SessionAuthentication
 from tastypie.authorization import Authorization
 from tastypie.bundle import Bundle
 from tastypie.constants import ALL_WITH_RELATIONS, ALL
@@ -99,4 +99,4 @@ class AppointmentsResource(ModelResource):
         queryset = Appointments.objects.all()
         resource_name = 'appointments'
         authorization = CustomerObjectsOnlyAuthorization()
-        authentication = BasicAuthentication()
+        authentication = SessionAuthentication()

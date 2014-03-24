@@ -3,7 +3,9 @@
 <html>
 <head>
     <!-- jQuery -->
-    {#    <script type="text/javascript" src="{%  static 'js/vendor/jquery-1.10.min.js' %}"></script>#}
+{#        <script type="text/javascript" src="{%  static 'js/vendor/jquery-1.10.min.js' %}"></script>#}
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
     {#    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>#}
     <script type="text/javascript" src="{% static 'js/vendor/angular.min.js' %}"></script>
@@ -23,6 +25,7 @@
     <script type="text/javascript" src="{% static 'js/vendor/angular-strap.tpl.min.js' %}"></script>
     {#    <script src="{% static 'css/bower_components/angular-strap/dist/angular-strap.min.js' %}"></script>#}
     {#    <script src="{% static 'css/bower_components/angular-strap/dist/angular-strap.tpl.min.js' %}"></script>#}
+    <!-- FlexSlider -->
 
     {##}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
@@ -30,6 +33,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-responsive.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/bootstrap-responsive.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+
     {#    <!-- Angular -->#}
     {#    <script type="text/javascript" src="{%  static 'js/vendor/angular.js' %}"></script>#}
     {#    <script type="text/javascript" src="{%  static 'js/vendor/angular-route.js' %}"></script>#}
@@ -101,6 +105,10 @@
                 href="http://ryanfait.com/sticky-footer/">Big Chef</a>.</p>
     </div>
 </div>
+
+<script type="application/javascript">
+    var csrftoken = $("{% csrf_token %}").val();
+</script>
 
 </body>
 </html>
