@@ -4,7 +4,7 @@
 /**
  * Created by nealshultz on 3/12/14.
  */
-var chef = angular.module('chef', ['ngRoute', 'ngAnimate',  'mgcrea.ngStrap', 'mgcrea.ngStrap.modal']);
+var chef = angular.module('chef', ['ngRoute', 'ngAnimate',  'mgcrea.ngStrap', 'mgcrea.ngStrap.modal', 'angular-flexslider']);
 
 chef.run(function ($http) {
     $http.defaults.headers.post['X-CSRFToken'] = csrftoken;

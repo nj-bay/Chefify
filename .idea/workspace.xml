@@ -23,20 +23,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="angular.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="angular.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chef/templates/angular.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="48" selection-start="4858" selection-end="4858" vertical-scroll-proportion="-14.958333" vertical-offset="1276" max-vertical-offset="1785">
+            <state line="37" column="44" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.70247936" vertical-offset="300" max-vertical-offset="1830">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chef/static/js/controllers/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="107" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.5263158" vertical-offset="1160" max-vertical-offset="1545">
-              <folding />
+            <state line="90" column="36" selection-start="2425" selection-end="2425" vertical-scroll-proportion="0.0" vertical-offset="1160" max-vertical-offset="1545">
+              <folding>
+                <marker date="1395700311000" expanded="true" signature="1658:2452" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,6 +77,15 @@
               <folding>
                 <element signature="n#style#0;n#button#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chef/static/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="27" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,18 +165,18 @@
         <option value="$PROJECT_DIR$/chef/static/css/custom.css" />
         <option value="$PROJECT_DIR$/chef/static/views/my_appoinment.html" />
         <option value="$PROJECT_DIR$/food/models.py" />
-        <option value="$PROJECT_DIR$/chef/templates/angular.html" />
-        <option value="$PROJECT_DIR$/chef/static/js/app.js" />
         <option value="$PROJECT_DIR$/chef/static/views/my_account.html" />
         <option value="$PROJECT_DIR$/food/api/authorization.py" />
         <option value="$PROJECT_DIR$/food/api/resources.py" />
         <option value="$PROJECT_DIR$/chef/static/js/controllers/application.js" />
+        <option value="$PROJECT_DIR$/chef/static/js/app.js" />
+        <option value="$PROJECT_DIR$/chef/templates/angular.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="87" />
-    <option name="y" value="289" />
+    <option name="x" value="158" />
+    <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="705" />
   </component>
@@ -423,6 +434,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chefify" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chefify" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chef" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -450,11 +483,11 @@
       <recent name="$PROJECT_DIR$/food/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/chef/static/css" />
+      <recent name="$PROJECT_DIR$/chef/static/components" />
       <recent name="$PROJECT_DIR$/chef/static/image" />
       <recent name="$PROJECT_DIR$/chef/static/js/controllers/backup" />
-      <recent name="$PROJECT_DIR$/chef/static/css" />
       <recent name="$PROJECT_DIR$/chef/static/views/partials" />
-      <recent name="$PROJECT_DIR$/chef" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.chefify">
@@ -693,7 +726,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="87" y="289" width="1280" height="705" extended-state="0" />
+    <frame x="158" y="22" width="1280" height="705" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -702,7 +735,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25201938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39967373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28548124" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3050571" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -984,20 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chef/static/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="60" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chef/templates/angular.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="48" selection-start="4858" selection-end="4858" vertical-scroll-proportion="-14.958333" vertical-offset="1276" max-vertical-offset="1785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chef/static/views/my_appoinment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="63" selection-start="350" selection-end="350" vertical-scroll-proportion="0.56149733" vertical-offset="0" max-vertical-offset="374">
@@ -1065,7 +1084,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chef/static/js/controllers/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="107" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.5263158" vertical-offset="1160" max-vertical-offset="1545">
+        <state line="90" column="36" selection-start="2425" selection-end="2425" vertical-scroll-proportion="0.0" vertical-offset="1160" max-vertical-offset="1545">
+          <folding>
+            <marker date="1395700311000" expanded="true" signature="1658:2452" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chef/static/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="27" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chef/templates/angular.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="44" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.70247936" vertical-offset="300" max-vertical-offset="1830">
           <folding />
         </state>
       </provider>
