@@ -96,6 +96,7 @@ class AppointmentsResource(ModelResource):
     customer = ToOneField(CustomerResource, 'customer', full=True, blank=True)
 
     class Meta:
+        allowed_methods = ['get', 'post', 'put']
         queryset = Appointments.objects.all()
         resource_name = 'appointments'
         authorization = CustomerObjectsOnlyAuthorization()

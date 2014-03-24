@@ -24,13 +24,13 @@ class CustomerObjectsOnlyAuthorization(Authorization):
 
         # Since they may not all be saved, iterate over them.
         for obj in object_list:
-            if obj.customer == bundle.request.user.customer:
+            if obj.customer == bundle.request.user.customer or bundle.obj.chef == bundle.request.user.chef:
                 allowed.append(obj)
 
         return allowed
 
     def update_detail(self, object_list, bundle):
-        return bundle.obj.customer == bundle.request.user.customer
+        return bundle.obj.customer == bundle.request.user.customer or bundle.obj.chef == bundle.request.user.chef
 
     def delete_list(self, object_list, bundle):
         raise Unauthorized("Sorry, no deletes.")

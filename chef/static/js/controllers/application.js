@@ -68,7 +68,7 @@ function ChefListCtrl($scope, $http, $location) {
  * Created by nealshultz on 3/20/14.
  */
 
-function MyAccountCtrl($scope, $http, $routeParams) {
+function MyAccountCtrl($scope, $http, $routeParams, $location) {
 
     $http.get('/api/v1/chefify_user/'+ $routeParams.user_id + '/?format=json').
         success(function(user) {
@@ -84,6 +84,13 @@ function MyAccountCtrl($scope, $http, $routeParams) {
 
     $scope.choices = [{ option : "CO", name : "Completed"}, { option : "AC", name : "Accepted"}, { option : "PE", name : "Pending"}, { option : "DE", name : "Declined"}];
     $scope.choice = $scope.choices[0];
+
+    $scope.select = function(appointment) {
+        $http.put('/api/v1/appointments/' + appointment.id + '/?format=json', {"status": appointment.status}).
+            success(function(response){
+                $location.path("/");
+            });
+    }
 
 
 

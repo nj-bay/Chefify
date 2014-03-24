@@ -33,7 +33,9 @@
                     {{ appointment.chef.chefify_user.id }}
                     {{ appointment.customer.id }} | {{ appointment.number_of_guests }} | {{ appointment.location.address }} | {{ appointment.start_time | date:'short'}}
 
-                    <select ng-model="choice" ng-options="c.name for c in choices"></select>
+                    <select ng-model="appointment.status" ng-options="c.option as c.name for c in choices"></select>
+
+                    <button  style='float: right;' ng-click="select(appointment)">Confirm Appointment</button>
 
                 </li>
            </ul>
