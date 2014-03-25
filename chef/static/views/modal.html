@@ -1,43 +1,53 @@
-<div>
-    <h1>Make a Reservation</h1>
-
+<div class="modalForm">
+    <h2>Make a Reservation</h2>
     <form ng-submit="submitForm()">
 
         <div>
 
-              <div class="form-group">
-                <label class="control-label"><i class="fa fa-calendar"></i>Start Datetime picker</label><br>
+            <div class="form-group">
+                <label class="control-label">Start Datetime picker</label>
+
                 <div class="form-group">
-                  <input type="text" size="10" class="form-control" ng-model="appointment.start_time" data-autoclose="1" placeholder="Date" bs-datepicker>
+                    <input type="text" size="10" class="form-control" ng-model="appointment.start_time"
+                           data-autoclose="1" placeholder="Date" bs-datepicker>
                 </div>
                 <div class="form-group">
-                  <input type="text" size="8" class="form-control" ng-model="appointment.start_time" data-autoclose="1" placeholder="Time" bs-timepicker>
+                    <input type="text" size="8" class="form-control" ng-model="appointment.start_time"
+                           data-autoclose="1" placeholder="Time" bs-timepicker>
                 </div>
-              </div>
+            </div>
 
         </div>
         <div>
             <div class="form-group">
-                <label class="control-label"><i class="fa fa-calendar"></i>End Datetime picker</label><br>
+                <label class="control-label">End Datetime picker</label>
+
                 <div class="form-group">
-                  <input type="text" size="10" class="form-control" ng-model="appointment.end_time" data-autoclose="1" placeholder="Date" bs-datepicker>
+                    <input type="text" size="10" class="form-control" ng-model="appointment.end_time" data-autoclose="1"
+                           placeholder="Date" bs-datepicker>
                 </div>
                 <div class="form-group">
-                  <input type="text" size="8" class="form-control" ng-model="appointment.end_time" data-autoclose="1" placeholder="Time" bs-timepicker>
+                    <input type="text" size="8" class="form-control" ng-model="appointment.end_time" data-autoclose="1"
+                           placeholder="Time" bs-timepicker>
                 </div>
             </div>
         </div>
 
-         <div>
-            number_of_guests: <input type="text" ng-model="appointment.number_of_guests">
+        <div>
+            Number of Guests: <input type="text" ng-model="appointment.number_of_guests">
         </div>
 
         <div>
-           has_menu: <input type="text" ng-model="appointment.has_menu">
+            Do you want to provide your own menu?
+            <div class="btn-group" ng-model="appointment.has_menu" bs-radio-group>
+                <label class="btn btn-default"><input type="radio" class="btn btn-default" value="true"> Yes</label>
+                <label class="btn btn-default"><input type="radio" class="btn btn-default" value="false"> No </label>
+            </div>
         </div>
-
-         <div>
-           event_type: <select ng-model="appointment.event_type"  ng-options="event_type.resource_uri as event_type.type for event_type in event_types"></select>
+        <br/>
+        <div>
+            event_type: <select ng-model="appointment.event_type"
+                                ng-options="event_type.resource_uri as event_type.type for event_type in event_types"></select>
         </div>
 
 

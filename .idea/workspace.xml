@@ -23,77 +23,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="angular.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="angular.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chef/templates/angular.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="44" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.70247936" vertical-offset="300" max-vertical-offset="1830">
+            <state line="70" column="47" selection-start="3499" selection-end="3499" vertical-scroll-proportion="-32.041668" vertical-offset="281" max-vertical-offset="1755">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chef/static/js/controllers/application.js">
+      <file leaf-file-name="glyphicons-halflings-regular.svg" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chef/static/css/fonts/glyphicons-halflings-regular.svg">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="36" selection-start="2425" selection-end="2425" vertical-scroll-proportion="0.0" vertical-offset="1160" max-vertical-offset="1545">
-              <folding>
-                <marker date="1395700311000" expanded="true" signature="1658:2452" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resources.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/food/api/resources.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="46" selection-start="3172" selection-end="3172" vertical-scroll-proportion="0.0" vertical-offset="1168" max-vertical-offset="1515">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3510">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resources.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///Library/Python/2.7/site-packages/tastypie/resources.py">
+      <file leaf-file-name="custom.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chef/static/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2384" column="76" selection-start="91210" selection-end="91210" vertical-scroll-proportion="0.0" vertical-offset="35160" max-vertical-offset="36030">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="authorization.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/food/api/authorization.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0" vertical-offset="328" max-vertical-offset="645">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my_account.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chef/static/views/my_account.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="79" selection-start="1155" selection-end="1155" vertical-scroll-proportion="-6.9166665" vertical-offset="389" max-vertical-offset="780">
-              <folding>
-                <element signature="n#style#0;n#button#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chef/static/js/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="27" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_location.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chef/static/views/add_location.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="12" selection-start="325" selection-end="325" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="435">
+            <state line="30" column="18" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="585">
               <folding />
             </state>
           </provider>
@@ -102,16 +53,61 @@
       <file leaf-file-name="chef_list.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chef/static/views/chef_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="60" selection-end="329" vertical-scroll-proportion="3.0833333" vertical-offset="134" max-vertical-offset="495">
+            <state line="9" column="81" selection-start="275" selection-end="275" vertical-scroll-proportion="-2.5" vertical-offset="75" max-vertical-offset="600">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/food/models.py">
+      <file leaf-file-name="modal.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chef/static/views/modal.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="25" selection-start="948" selection-end="948" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="2025">
+            <state line="54" column="0" selection-start="2231" selection-end="2231" vertical-scroll-proportion="-16.458334" vertical-offset="415" max-vertical-offset="960">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chef/static/css/bootstrap.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="171" column="12" selection-start="2396" selection-end="2401" vertical-scroll-proportion="-3.4615386" vertical-offset="2475" max-vertical-offset="92595">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chef/static/views/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="720">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chef/static/js/controllers/application.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="16" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1635">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="authorization.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/food/api/authorization.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.53488374" vertical-offset="258" max-vertical-offset="645">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chef/static/js/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="27" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
               <folding />
             </state>
           </provider>
@@ -155,27 +151,27 @@
         <option value="$PROJECT_DIR$/chef/static/js/controllers/chef_detail.js" />
         <option value="$PROJECT_DIR$/chef/static/js/controllers/index.js" />
         <option value="$PROJECT_DIR$/chef/static/js/controllers/chef_list.js" />
-        <option value="$PROJECT_DIR$/chef/static/views/modal.html" />
         <option value="$PROJECT_DIR$/chefify/settings.py" />
         <option value="$PROJECT_DIR$/food/templates/registration/logout.html" />
-        <option value="$PROJECT_DIR$/chef/static/views/chef_list.html" />
         <option value="$PROJECT_DIR$/chef/static/js/controllers/my_account.js" />
-        <option value="$PROJECT_DIR$/chef/static/views/index.html" />
         <option value="$PROJECT_DIR$/chefify/urls.py" />
-        <option value="$PROJECT_DIR$/chef/static/css/custom.css" />
         <option value="$PROJECT_DIR$/chef/static/views/my_appoinment.html" />
         <option value="$PROJECT_DIR$/food/models.py" />
         <option value="$PROJECT_DIR$/chef/static/views/my_account.html" />
         <option value="$PROJECT_DIR$/food/api/authorization.py" />
         <option value="$PROJECT_DIR$/food/api/resources.py" />
-        <option value="$PROJECT_DIR$/chef/static/js/controllers/application.js" />
         <option value="$PROJECT_DIR$/chef/static/js/app.js" />
+        <option value="$PROJECT_DIR$/chef/static/js/controllers/application.js" />
+        <option value="$PROJECT_DIR$/chef/static/views/index.html" />
         <option value="$PROJECT_DIR$/chef/templates/angular.html" />
+        <option value="$PROJECT_DIR$/chef/static/views/chef_list.html" />
+        <option value="$PROJECT_DIR$/chef/static/views/modal.html" />
+        <option value="$PROJECT_DIR$/chef/static/css/custom.css" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="158" />
+    <option name="x" value="1" />
     <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="705" />
@@ -316,24 +312,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefify" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefify" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chef" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -378,81 +356,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefify" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefify" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chef" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefify" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefify" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chef" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefify" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefify" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chef" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -479,6 +383,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/chef/static/css" />
       <recent name="$PROJECT_DIR$/chef/static/image" />
       <recent name="$PROJECT_DIR$/food/templates" />
     </key>
@@ -726,8 +631,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="158" y="22" width="1280" height="705" extended-state="0" />
-    <editor active="true" />
+    <frame x="1" y="22" width="1280" height="705" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -800,16 +705,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chef/static/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="356" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/food/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4380" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/food/migrations/0006_auto__chg_field_appointments_location.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2040" />
@@ -917,11 +812,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chef/static/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="621" selection-end="1028" vertical-scroll-proportion="-3.7916667" vertical-offset="179" max-vertical-offset="615" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chef/static/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105" />
@@ -940,13 +830,6 @@
     <entry file="file://$PROJECT_DIR$/food/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="33" selection-start="446" selection-end="446" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chef/static/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chef/static/image/Chef_12.jpeg">
@@ -1024,20 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chef/static/views/modal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="14" selection-start="712" selection-end="712" vertical-scroll-proportion="9.041667" vertical-offset="472" max-vertical-offset="810">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chef/static/views/chef_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="60" selection-end="329" vertical-scroll-proportion="3.0833333" vertical-offset="134" max-vertical-offset="495">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chef/static/views/add_location.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="12" selection-start="325" selection-end="325" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="435">
@@ -1048,9 +917,7 @@
     <entry file="file://$PROJECT_DIR$/chef/static/views/my_account.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="79" selection-start="1155" selection-end="1155" vertical-scroll-proportion="-6.9166665" vertical-offset="389" max-vertical-offset="780">
-          <folding>
-            <element signature="n#style#0;n#button#0;n#li#0;n#ul#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1075,22 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/food/api/authorization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0" vertical-offset="328" max-vertical-offset="645">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chef/static/js/controllers/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="36" selection-start="2425" selection-end="2425" vertical-scroll-proportion="0.0" vertical-offset="1160" max-vertical-offset="1545">
-          <folding>
-            <marker date="1395700311000" expanded="true" signature="1658:2452" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chef/static/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="27" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
@@ -1098,9 +949,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/chef/static/js/controllers/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="16" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1635">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chef/static/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="-7.5" vertical-offset="0" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chef/static/css/fonts/glyphicons-halflings-regular.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/chef/templates/angular.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="44" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.70247936" vertical-offset="300" max-vertical-offset="1830">
+        <state line="70" column="47" selection-start="3499" selection-end="3499" vertical-scroll-proportion="-32.041668" vertical-offset="281" max-vertical-offset="1755">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chef/static/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="12" selection-start="2396" selection-end="2401" vertical-scroll-proportion="-3.4615386" vertical-offset="2475" max-vertical-offset="92595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chef/static/views/chef_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="81" selection-start="275" selection-end="275" vertical-scroll-proportion="-2.5" vertical-offset="75" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chef/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="18" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chef/static/views/modal.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="0" selection-start="2231" selection-end="2231" vertical-scroll-proportion="-16.458334" vertical-offset="415" max-vertical-offset="960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/food/api/authorization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.53488374" vertical-offset="258" max-vertical-offset="645">
           <folding />
         </state>
       </provider>

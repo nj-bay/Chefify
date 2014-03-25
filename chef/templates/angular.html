@@ -55,10 +55,11 @@
 <body>
 
 <!-- Part 1: Wrap all page content here -->
+
 <div id="wrap" ng-app="chef">
 
     <!-- Fixed navbar -->
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar">
         <div class="navbar-inner">
             <div class="container">
 
@@ -66,8 +67,8 @@
 
                 <div>
                     <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#/chef_list">Browse Chef</a></li>
+                        <li data-match-route="#"><a href="#">Home</a></li>
+                        <li data-match-route="#/chef_list"><a href="#/chef_list">Browse Chef</a></li>
                     </ul>
                     <ul class="nav nav-login" id="nav-right">
                         {% if user.is_authenticated %}
@@ -87,15 +88,9 @@
             </div>
         </div>
     </div>
-
     <!-- Begin page content -->
     <div class="container">
-        <div class="page-header">
-            <h1>Chefery</h1>
-            <h1>{{ user.username }}</h1>
-        </div>
         <div class="ng-view">
-
         </div>
     </div>
 

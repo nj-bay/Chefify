@@ -7,6 +7,12 @@ function IndexCtrl($scope, $http) {
         success(function(chefs) {
             $scope.chefs = chefs.objects;
         });
+    $scope.slides = [
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+				'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
+			];
 }
 
 

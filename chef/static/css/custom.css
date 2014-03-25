@@ -12,3 +12,22 @@
 .myAppointment h3 {
     color: blueviolet;
 }
+
+
+.chef_list {
+    background-image: url('../image/background/chef_list.jpg');
+}
+
+
+ul.chef_name_list {
+    list-style-image:url('../image/background/icon.png');
+}
+
+.modalForm {
+    background-color: #00FFFF;
+}
+
+.modalForm h2 {
+    color: #8A2BE2;
+}
+
