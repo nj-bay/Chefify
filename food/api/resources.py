@@ -16,6 +16,7 @@ class ChefifyUserResource(ModelResource):
 
 
 class CustomerResource(ModelResource):
+    chefify_user = ToOneField(ChefifyUserResource, 'chefify_user', full=True)
     class Meta:
         queryset = Customer.objects.all()
         resource_name = 'customer'

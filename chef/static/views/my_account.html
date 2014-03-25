@@ -1,8 +1,6 @@
-
-
 <div class="container">
 
-    <h1 class="span12">User Profile</h1>
+    <h3 class="span12 account_setting">Account Settings</h3>
 
 
     <div class="span5">
@@ -11,37 +9,67 @@
 
     <h3>My Account info</h3>
 
-    {{ user | json }}
 
-<button ng-hide="user.is_chef" ng-click="">Register as a Chef</button>
 
-<div class="chef_info" ng-show="user.is_chef">
-    <h3>Chef Information</h3>
-    <div class="span6">
-        <ul>
-            <li><a href="#">Add a Menu</a></li>
-            <li><a href="#/my_appoinment">Appointments</a></li>
-        </ul>
+
+
+
+
+    <ul>
+        <li>First Name: {{ user.first_name }}</li>
+        <li>Last Name: {{ user.lasst_name }}</li>
+        <li>Email: {{ user.email }}</li>
+        <li>Username: {{ user.username }}</li>
+        <li>Join Date: {{ user.date_joined }}</li>
+        <li ng-repeat="appointment in appointments | filter:user.email" >Restaurant: {{ appointment.chef.restaurant }}</li>
+
+
+
+        <a>Edit Your Information</a>
+    </ul>
+
+    <button ng-hide="user.is_chef" ng-click="">Register as a Chef</button>
+
+    <div class="chef_info" ng-show="user.is_chef">
+
+
+        <div class="span6">
+            <ul>
+                <li><a href="#">Add a Menu</a></li>
+                <li><a href="#/my_appoinment">Appointment Details</a></li>
+            </ul>
+        </div>
+
+
+        <div class="myAppointment">
+
+            <table class="table table-condensed">
+                <caption><h3>My Appointments</h3></caption>
+                <thead>
+                <tr>
+                    <th>Customers Name</th>
+                    <th>Date</th>
+                    <th>Number of Guests</th>
+                    <th>Event Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="appointment in appointments | filter:user.email">
+                <tr>
+                    <td>{{ appointment.customer.chefify_user.username }}</td>
+                    <td>{{ appointment.start_time | date:'short' }} </td>
+                    <td>{{ appointment.number_of_guests }} </td>
+                    <td>{{ appointment.event_type.type }}</td>
+                    <td><select ng-model="appointment.status" ng-options="c.option as c.name for c in choices"></select></td>
+                    <td><button  style='float: right;' ng-click="select(appointment)">Confirm</button></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
-
-
-    <div class="myAppointment">
-        <h3>My Appointments</h3>
-
-           <ul ng-repeat="appointment in appointments | filter:user.email" class="span6">
-                <li>
-                    {{ appointment.chef.chefify_user.id }}
-                    {{ appointment.customer.id }} | {{ appointment.number_of_guests }} | {{ appointment.location.address }} | {{ appointment.start_time | date:'short'}}
-
-                    <select ng-model="appointment.status" ng-options="c.option as c.name for c in choices"></select>
-
-                    <button  style='float: right;' ng-click="select(appointment)">Confirm Appointment</button>
-
-                </li>
-           </ul>
-    </div>
-
-</div>
 
 
 </div>

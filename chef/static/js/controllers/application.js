@@ -82,14 +82,23 @@ function MyAccountCtrl($scope, $http, $routeParams, $location) {
         });
 
 
+
     $http.get('/api/v1/appointments/?format=json').
         success(function(appointments) {
             $scope.appointments = appointments.objects;
-
         });
+
+    $http.get('/api/v1/chef/?format=json').
+        success(function(chefs) {
+            $scope.chefs = chefs.objects;
+        });
+
+
 
     $scope.choices = [{ option : "CO", name : "Completed"}, { option : "AC", name : "Accepted"}, { option : "PE", name : "Pending"}, { option : "DE", name : "Declined"}];
     $scope.choice = $scope.choices[0];
+
+
 
     $scope.select = function(appointment) {
         $http.put('/api/v1/appointments/' + appointment.id + '/?format=json', {"status": appointment.status}).
