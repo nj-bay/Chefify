@@ -14,13 +14,17 @@
 }
 
 
-.chef_list {
-    background-image: url('../image/background/chef_list.jpg');
+.chef_name_list {
+    list-style-type: none;
 }
 
 
 ul.chef_name_list {
-    list-style-image:url('../image/background/icon.png');
+
+}
+
+ul.chef_name_list li {
+    font-size: 20px;
 }
 
 .modalForm {
@@ -36,4 +40,19 @@ h3.account_setting {
     color: #000099;
 }
 
+#home_search {
+    z-index: 1000000;
+}
 
+#home_search_results {
+
+}
+
+#record_data_chef {
+    list-style-type: none;
+}
+
+#record_data_chef li{
+    font-size: 20px;
+    padding: 10px;
+}
