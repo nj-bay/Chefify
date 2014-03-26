@@ -46,6 +46,9 @@
         </div>
         <br/>
         <div>
+            Location: <select ng-model="location" ng-options="o for o in options"></select>
+        </div>
+        <div>
             event_type: <select ng-model="appointment.event_type"
                                 ng-options="event_type.resource_uri as event_type.type for event_type in event_types"></select>
         </div>

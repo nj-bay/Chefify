@@ -50,6 +50,17 @@ class ChefifyUser(AbstractUser):
     def get_absolute_url(self):
         return "/app"
 
+class Location(models.Model):
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    zip_code = models.CharField(max_length=100)
+    latitude = longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
+
+
+    def __unicode__(self):
+        return "{0} {1}, {2} {3}".format(self.address, self.city, self.state, self.zip_code)
 
 class Chef(models.Model):
     chefify_user = models.OneToOneField(ChefifyUser)
@@ -86,18 +97,6 @@ class EventType(models.Model):
 
     def __unicode__(self):
         return self.type
-
-
-class Location(models.Model):
-    address = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    zip_code = models.CharField(max_length=100)
-    latitude = longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
-
-    def __unicode__(self):
-        return "{0} {1}, {2} {3}".format(self.address, self.city, self.state, self.zip_code)
 
 class Appointments(models.Model):
     chef = models.ForeignKey(Chef, null=True)

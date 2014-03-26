@@ -8,8 +8,15 @@ from tastypie.resources import ModelResource, Resource
 from food.api.authorization import CustomerObjectsOnlyAuthorization
 from food.models import Chef, Menu, Cuisine, DishType, Dish, Appointments, EventType, Location, ChefifyUser, Customer
 
+class LocationResource(ModelResource):
+    class Meta:
+        queryset = Location.objects.all()
+        resource_name = 'location'
+        authorization = Authorization()
+
 
 class ChefifyUserResource(ModelResource):
+    location = ToManyField(LocationResource, 'location', full=True, null=True);
     class Meta:
         queryset = ChefifyUser.objects.all()
         resource_name = 'chefify_user'
@@ -81,13 +88,6 @@ class EventTypeResource(ModelResource):
     class Meta:
         queryset = EventType.objects.all()
         resource_name = 'event_type'
-
-class LocationResource(ModelResource):
-    class Meta:
-        queryset = Location.objects.all()
-        resource_name = 'location'
-        authorization = Authorization()
-
 
 class AppointmentsResource(ModelResource):
     chef = ToOneField(ChefResource, 'chef', full=True)

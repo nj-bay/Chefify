@@ -45,6 +45,8 @@ function ChefListCtrl($scope, $http, $location) {
             $scope.chefs = chefs.objects;
         });
 
+    $scope.options = ['225 Bush, San Francisco, CA, 94104', '345 test, SF, CA, 94103'];
+
     $scope.currentChef = null;
 
     $scope.appointment = {};
@@ -90,8 +92,6 @@ function MyAccountCtrl($scope, $http, $routeParams, $location) {
             $scope.user = user;
         });
 
-
-
     $http.get('/api/v1/appointments/?format=json').
         success(function(appointments) {
             $scope.appointments = appointments.objects;
@@ -102,11 +102,8 @@ function MyAccountCtrl($scope, $http, $routeParams, $location) {
             $scope.chefs = chefs.objects;
         });
 
-
-
     $scope.choices = [{ option : "CO", name : "Completed"}, { option : "AC", name : "Accepted"}, { option : "PE", name : "Pending"}, { option : "DE", name : "Declined"}];
     $scope.choice = $scope.choices[0];
-
 
 
     $scope.select = function(appointment) {
