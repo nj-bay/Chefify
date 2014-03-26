@@ -3,17 +3,15 @@
     <h3 class="span12 account_setting">Account Settings</h3>
 
 
-    <div class="span5">
+    <div ng-show="user.is_chef" class="span5">
         <img src="../static/image/Chef_{{ user.id }}.jpeg" alt=""/>
     </div>
 
+    <div ng-hide="user.is_chef" class="span5">
+        <img src="../static/image/User_{{ user.id }}.jpeg" alt=""/>
+    </div>
+
     <h3>My Account info</h3>
-
-
-
-
-
-
 
     <ul>
         <li>First Name: {{ user.first_name }}</li>
@@ -22,13 +20,13 @@
         <li>Username: {{ user.username }}</li>
         <li>Join Date: {{ user.date_joined }}</li>
         <li ng-repeat="appointment in appointments | filter:user.email" >Restaurant: {{ appointment.chef.restaurant }}</li>
-
-
-
         <a>Edit Your Information</a>
+        <br/>
+        <a ng-hide="user.is_chef" href="#/add_location">Add a Location</a>
     </ul>
-
-    <button ng-hide="user.is_chef" ng-click="">Register as a Chef</button>
+    <div ng-hide="user.is_chef">
+        <button  ng-click="">Register as a Chef</button>
+    </div>
 
     <div class="chef_info" ng-show="user.is_chef">
 
@@ -61,8 +59,11 @@
                     <td>{{ appointment.start_time | date:'short' }} </td>
                     <td>{{ appointment.number_of_guests }} </td>
                     <td>{{ appointment.event_type.type }}</td>
-                    <td><select ng-model="appointment.status" ng-options="c.option as c.name for c in choices"></select></td>
-                    <td><button  style='float: right;' ng-click="select(appointment)">Confirm</button></td>
+                    <td><select ng-model="appointment.status" ng-options="c.option as c.name for c in choices"></select>
+                    <button  style='float: right;margin-right: 5px' ng-click="select(appointment)">Confirm</button></td>
+                    <td>
+                        <a href="#/location_map">View Detail</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
