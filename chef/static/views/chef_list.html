@@ -1,7 +1,7 @@
 
 <div class="container chef_list">
 
-    <h3 class="span12">Chef List</h3>
+    <h3 class="span12" id="here_are_our_chefs">Here are our Chefs</h3>
 
     <div class="span6">
     <ul class="chef_name_list" ng-repeat="chef in chefs" >
@@ -18,13 +18,34 @@
 
     <div class="span5" ng-show="currentChef.chefify_user.email">
         <img src="../static/image/Chef_{{ currentChef.chefify_user.id }}.jpeg" />
-        <ul id="record_data_chef">
-            <li>Name: {{ currentChef.chefify_user.first_name }} {{ currentChef.chefify_user.last_name }}</li>
-            <li>Email: {{ currentChef.chefify_user.email }} </li>
-            <li>Email: {{ currentChef.chefify_user.email }} </li>
-            <li>Menu: {{ currentChef.menu }} </li>
-            <li>Price Minimum: {{ currentChef.price_minimum }} </li>
-        </ul>
+
+            <table class="table table-condensed">
+                <caption><h3>W</h3></caption>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Past Menus</th>
+                    <th>Recommended Price Minimum</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="appointment in appointments | filter:user.email">
+                <tr>
+                    <td>{{ currentChef.chefify_user.first_name }} {{ currentChef.chefify_user.last_name }}</td>
+                    <td>{{ currentChef.chefify_user.email }} </td>
+                    <td>{{ currentChef.menu }} </td>
+                    <td>{{ currentChef.price_minimum }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+{#        <ul id="record_data_chef">#}
+{#            <li>Name: {{ currentChef.chefify_user.first_name }} {{ currentChef.chefify_user.last_name }}</li>#}
+{#            <li>Email: {{ currentChef.chefify_user.email }} </li>#}
+{#            <li>Menu: {{ currentChef.menu }} </li>#}
+{#            <li>Price Minimum: {{ currentChef.price_minimum }} </li>#}
+{#        </ul>#}
 
         <button type="button" class="btn btn-lg btn-danger" data-content-template="/static/views/modal.html"
                 bs-modal="modal">

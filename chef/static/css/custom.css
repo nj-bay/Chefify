@@ -40,13 +40,32 @@ h3.account_setting {
     color: #000099;
 }
 
-#home_search {
-    z-index: 1000000;
+.search {
+    /*padding: 150px 150px;*/
 }
 
-#home_search_results {
-
+.searchBar {
+   text-align: center;
+   margin: auto;
 }
+.searchResult {
+   text-align: center;
+   margin: auto;
+}
+
+.searchResult ul {
+   text-align: center;
+   margin: auto;
+}
+.searchResult li {
+    line-height: 30px;
+}
+
+.searchResult a {
+    font-size: 20px;
+    color: #04151D;
+}
+
 
 #record_data_chef {
     list-style-type: none;
@@ -55,4 +74,109 @@ h3.account_setting {
 #record_data_chef li{
     font-size: 20px;
     padding: 10px;
+}
+
+#learn_more {
+    left: 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.brand#brand_name {
+    color: #060c90;;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a #chef_search_results {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #060c90;
+}
+
+#here_are_our_chefs {
+    font-family: fantasy;
+}
+
+/*#wrap {*/
+    /*transition: all 0.5s ease;*/
+    /*background: #c8fffd;*/
+    /*padding: 10px;*/
+/*}*/
+
+/*#wrap:hover {*/
+  /*background: #d7ccdd;*/
+  /*padding: 20px;*/
+/*}*/
+
+#clouds {
+    background: url(/image/background/clouds.png) center bottom no-repeat;
+    height: 500px;
+    position: absolute;
+    bottom: -135px;
+    width: 100%;
+}
+
+.navbar-inner
+{
+    min-height: 80px;
+}
+
+.navbar-inner a {
+    font-size: 15px;
+}
+
+.navbar .container {
+    margin-top: 20px;
+    width: auto;
+}
+
+#nav-right li {
+    float: right;
+}
+
+.navbar .brand {
+    text-align: center;
+}
+.logo img {
+    margin-left: 19px;
+}
+
+.homepage {
+    background: url(../image/background/homepage.jpg) center bottom no-repeat;
+    height: 500px;
+    /*position: absolute;*/
+    bottom: -135px;
+    width: 100%;
+}
+
+.homepage h1 {
+    color: #42413e;
+    font-family: "Antenna",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 64px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+
+.homepage h3 {
+    font-family: "Gotham SSm A","Gotham SSm B",Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #515252;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0px;
+    margin-top: -18px;
+    margin-bottom: 21px;
+}
+
+.search {
+    width: 100%;
+    margin: auto;
+    display: block;
 }

@@ -1,43 +1,38 @@
-<div class="container">
+<div class="homepage container">
 
-    <div class="search" id="home_search">
+    <div>
+        <h1 class="text-center">Chef Night</h1>
+        <h3 class="text-center">Input any thing your want</h3>
+    </div>
+
+    <div class="search">
+        <div class="searchBar">
             <div class="controls controls-row" ng-model="search">
                 <input type="text" class="input-xlarge" placeholder="Search for Chefs by Name"
                        ng-model="search.first_name"/>
                 <input type="text" class="input-xlarge" placeholder="Search for Chefs by Cuisine"
                        ng-model="search.cuisine"/>
             </div>
-    </div>
+        </div>
 
 
-        <div class="searchResult" id="home_search_results" ng-show="search">
-            <h3>Search Result</h3>
-            <ul ng-repeat="chef in chefs | filter:search.first_name" class="span6" ng-show="search.first_name">
+        <div class="searchResult" ng-show="search">
+
+            <ul ng-repeat="chef in chefs | filter:search.first_name" ng-show="search.first_name">
                 <li>
                     <a href=""
-                       ng-click="setCurrentChef(chef.chefify_user.email)">{{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }} </a> | {{ chef.cuisine[0].type }} | {{ chef.price_minimum }}
+                       ng-click="setCurrentChef(chef.chefify_user.email)">{{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }} </a>
                 </li>
             </ul>
 
             <ul ng-repeat="chef in chefs | filter:search.cuisine" class="span6" ng-show="search.cuisine">
                 <li>
-                    <a href=""
-                       ng-click="setCurrentChef(chef.chefify_user.email)">{{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }} </a> | {{ chef.cuisine[0].type }} | {{ chef.price_minimum }}
+                    <a id="chef_search_results" href=""
+                       ng-click="setCurrentChef(chef.chefify_user.email)">{{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }} </a>
                 </li>
             </ul>
 
-
         </div>
-
-    <!--div class="slideshow">
-
-    <flex-slider class="carousel" slide="s in slides" animation="slide" animation-loop="true" slideshow-speed="3000" item-margin="5">
-		<li>
-			<img ng-src="{{s}}">
-		</li>
-	</flex-slider>
-
-    </div-->
-
+    </div>
 
 </div>

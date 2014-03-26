@@ -63,20 +63,22 @@
         <div class="navbar-inner">
             <div class="container">
 
-                <a class="brand" href="#">Chefery</a>
-
                 <div>
-                    <ul class="nav">
+                    <ul class="nav span5">
                         <li data-match-route="#"><a href="#">Home</a></li>
                         <li data-match-route="#/chef_list"><a href="#/chef_list">Browse Chef</a></li>
                     </ul>
-                    <ul class="nav nav-login" id="nav-right">
+                    <div class="logo span2">
+                        <img src="../static/image/front_pics/chef_moustache.jpg" alt=""/>
+                    </div>
+
+                    <ul class="nav nav-login span5" id="nav-right">
                         {% if user.is_authenticated %}
-                            <li><a href="#">Hello: {{ user.username }}</a></li>
+                            <li><a href="{% url 'auth_logout' %}">Log out</a></li>
                             <li>
                                <a href="#/my_account/{{ user.id }}">My Account</a>
                             </li>
-                            <li><a href="{% url 'auth_logout' %}">Log out</a></li>
+                            <li><a href="#">{{ user.username }}</a></li>
 {#                            <li><a href="{% url 'auth_password_change' %}"> Change password </a><li>#}
                         {% else %}
                             <li><a href="{% url 'registration_register' %}"> Sign Up </a></li>
