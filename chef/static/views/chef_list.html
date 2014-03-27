@@ -2,17 +2,33 @@
 
     <h3 class="span12" id="here_are_our_chefs">Here are our Chefs</h3>
 
-    <div class="span5">
         <ul class="chef_name_list" ng-repeat="chef in chefs">
-            <li><p class="print">
+            <!--li><p class="print">
                 <a href=""
                    ng-click="setCurrentChef(chef.chefify_user.email)">Chef: {{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }}
                     of {{ chef.restaurant }}</a>
-            </p></li>
-        </ul>
-    </div>
+            </p></li-->
+            <img src="../static/image/Chef_{{ chef.chefify_user.id }}.jpeg"/>
 
-    <div class="span6 chef_img" ng-hide="currentChef.chefify_user.email">
+                <p>
+                    Meet Chef <span class="alert-info">{{ chef.chefify_user.first_name }} {{ chef.chefify_user.last_name }}</span>
+                    <br/>
+                    This Chef is available for a starting rate of {{ chef.price_minimum }}
+                    <br/>
+                    For further information, you can reach them at <a href="mailto:{{ chef.chefify_user.email }}"> {{ chef.chefify_user.email }}</a>, Check out past
+                    <a href="#" >Menus</a> as well as their <a href="#">bios</a>
+                </p>
+
+                <button type="button" class="btn btn-lg btn-danger" ng-click="setCurrentChef(chef.chefify_user.email)" data-content-template="/static/views/modal.html"
+                        bs-modal="modal">
+                    Reservation
+                </button>
+
+        </ul>
+    <br style="clear:both;"/>
+
+
+    <!--div class="span6 chef_img" ng-hide="currentChef.chefify_user.email">
         <img class="span2" src="../static/image/background/Chef_Plate.jpg"/>
         <div class="span3">
             <p id="record_data_chef">
@@ -40,6 +56,6 @@
                 Reservation
             </button>
         </div>
-    </div>
+    </div-->
 
 </div>
