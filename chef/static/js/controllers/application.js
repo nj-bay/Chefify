@@ -51,6 +51,7 @@ function ChefListCtrl($scope, $http, $location) {
 
     $scope.appointment = {};
 
+
     $scope.setCurrentChef = function(email){
      //with map key value
         for(i=0; i < $scope.chefs.length; i++)
