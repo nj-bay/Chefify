@@ -95,3 +95,8 @@ LOGIN_REDIRECT_URL = 'angular'
 AUTH_USER_MODEL = "food.ChefifyUser"
 
 TASTYPIE_FULL_DEBUG = True
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
