@@ -1,0 +1,1992 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE auth_group_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_id_seq OWNER TO nealshultz;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE auth_group (
+    id integer DEFAULT nextval('auth_group_id_seq'::regclass) NOT NULL,
+    name character varying(80) NOT NULL
+);
+
+
+ALTER TABLE public.auth_group OWNER TO nealshultz;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE auth_group_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_group_permissions_id_seq OWNER TO nealshultz;
+
+--
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE auth_group_permissions (
+    id integer DEFAULT nextval('auth_group_permissions_id_seq'::regclass) NOT NULL,
+    group_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.auth_group_permissions OWNER TO nealshultz;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE auth_permission_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_permission_id_seq OWNER TO nealshultz;
+
+--
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE auth_permission (
+    id integer DEFAULT nextval('auth_permission_id_seq'::regclass) NOT NULL,
+    name character varying(50) NOT NULL,
+    content_type_id integer NOT NULL,
+    codename character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.auth_permission OWNER TO nealshultz;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE django_admin_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_admin_log_id_seq OWNER TO nealshultz;
+
+--
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE django_admin_log (
+    id integer DEFAULT nextval('django_admin_log_id_seq'::regclass) NOT NULL,
+    action_time timestamp without time zone NOT NULL,
+    user_id integer NOT NULL,
+    content_type_id integer,
+    object_id text,
+    object_repr character varying(200) NOT NULL,
+    action_flag bigint NOT NULL,
+    change_message text NOT NULL
+);
+
+
+ALTER TABLE public.django_admin_log OWNER TO nealshultz;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE django_content_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.django_content_type_id_seq OWNER TO nealshultz;
+
+--
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE django_content_type (
+    id integer DEFAULT nextval('django_content_type_id_seq'::regclass) NOT NULL,
+    name character varying(100) NOT NULL,
+    app_label character varying(100) NOT NULL,
+    model character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.django_content_type OWNER TO nealshultz;
+
+--
+-- Name: django_session; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE django_session (
+    session_key character varying(40) NOT NULL,
+    session_data text NOT NULL,
+    expire_date timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.django_session OWNER TO nealshultz;
+
+--
+-- Name: food_appointments_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_appointments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_appointments_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_appointments; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_appointments (
+    id integer DEFAULT nextval('food_appointments_id_seq'::regclass) NOT NULL,
+    chef_id integer,
+    customer_id integer NOT NULL,
+    ratings bigint,
+    start_time timestamp without time zone NOT NULL,
+    end_time timestamp without time zone NOT NULL,
+    number_of_guests bigint NOT NULL,
+    event_type_id integer NOT NULL,
+    has_menu boolean NOT NULL,
+    menu_id integer,
+    location_id integer,
+    status character(2) DEFAULT 'PE'::character(1) NOT NULL
+);
+
+
+ALTER TABLE public.food_appointments OWNER TO nealshultz;
+
+--
+-- Name: food_chef_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_chef_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_chef_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_chef; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_chef (
+    id integer DEFAULT nextval('food_chef_id_seq'::regclass) NOT NULL,
+    chefify_user_id integer NOT NULL,
+    price_minimum numeric(8,2),
+    price_maximum numeric(8,2),
+    has_equipment boolean NOT NULL,
+    equipment_charge bigint NOT NULL,
+    travel_radius bigint NOT NULL,
+    restaurant character varying(100)
+);
+
+
+ALTER TABLE public.food_chef OWNER TO nealshultz;
+
+--
+-- Name: food_chef_cuisine_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_chef_cuisine_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_chef_cuisine_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_chef_cuisine; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_chef_cuisine (
+    id integer DEFAULT nextval('food_chef_cuisine_id_seq'::regclass) NOT NULL,
+    chef_id integer NOT NULL,
+    cuisine_id integer NOT NULL
+);
+
+
+ALTER TABLE public.food_chef_cuisine OWNER TO nealshultz;
+
+--
+-- Name: food_chefifyuser_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_chefifyuser_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_chefifyuser_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_chefifyuser; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_chefifyuser (
+    id integer DEFAULT nextval('food_chefifyuser_id_seq'::regclass) NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp without time zone NOT NULL,
+    is_superuser boolean NOT NULL,
+    username character varying(30) NOT NULL,
+    first_name character varying(30) NOT NULL,
+    last_name character varying(30) NOT NULL,
+    email character varying(75) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    date_joined timestamp without time zone NOT NULL,
+    menu_id integer,
+    is_chef boolean NOT NULL,
+    location_id integer
+);
+
+
+ALTER TABLE public.food_chefifyuser OWNER TO nealshultz;
+
+--
+-- Name: food_chefifyuser_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_chefifyuser_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_chefifyuser_groups_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_chefifyuser_groups; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_chefifyuser_groups (
+    id integer DEFAULT nextval('food_chefifyuser_groups_id_seq'::regclass) NOT NULL,
+    chefifyuser_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE public.food_chefifyuser_groups OWNER TO nealshultz;
+
+--
+-- Name: food_chefifyuser_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_chefifyuser_user_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_chefifyuser_user_permissions_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_chefifyuser_user_permissions; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_chefifyuser_user_permissions (
+    id integer DEFAULT nextval('food_chefifyuser_user_permissions_id_seq'::regclass) NOT NULL,
+    chefifyuser_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE public.food_chefifyuser_user_permissions OWNER TO nealshultz;
+
+--
+-- Name: food_cuisine_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_cuisine_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_cuisine_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_cuisine; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_cuisine (
+    id integer DEFAULT nextval('food_cuisine_id_seq'::regclass) NOT NULL,
+    type character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.food_cuisine OWNER TO nealshultz;
+
+--
+-- Name: food_customer_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_customer_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_customer_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_customer; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_customer (
+    id integer DEFAULT nextval('food_customer_id_seq'::regclass) NOT NULL,
+    chefify_user_id integer NOT NULL
+);
+
+
+ALTER TABLE public.food_customer OWNER TO nealshultz;
+
+--
+-- Name: food_dish_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_dish_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_dish_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_dish; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_dish (
+    id integer DEFAULT nextval('food_dish_id_seq'::regclass) NOT NULL,
+    name character varying(100) NOT NULL,
+    type_id integer NOT NULL,
+    cuisine_id integer NOT NULL
+);
+
+
+ALTER TABLE public.food_dish OWNER TO nealshultz;
+
+--
+-- Name: food_dishtype_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_dishtype_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_dishtype_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_dishtype; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_dishtype (
+    id integer DEFAULT nextval('food_dishtype_id_seq'::regclass) NOT NULL,
+    name character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.food_dishtype OWNER TO nealshultz;
+
+--
+-- Name: food_eventtype_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_eventtype_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_eventtype_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_eventtype; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_eventtype (
+    id integer DEFAULT nextval('food_eventtype_id_seq'::regclass) NOT NULL,
+    type character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.food_eventtype OWNER TO nealshultz;
+
+--
+-- Name: food_location_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_location_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_location_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_location; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_location (
+    id integer DEFAULT nextval('food_location_id_seq'::regclass) NOT NULL,
+    address character varying(100) NOT NULL,
+    city character varying(100) NOT NULL,
+    state character varying(100) NOT NULL,
+    zip_code character varying(100) NOT NULL,
+    latitude numeric(9,6),
+    longitude numeric(9,6)
+);
+
+
+ALTER TABLE public.food_location OWNER TO nealshultz;
+
+--
+-- Name: food_menu_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_menu_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_menu_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_menu; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_menu (
+    id integer DEFAULT nextval('food_menu_id_seq'::regclass) NOT NULL,
+    cuisine_id integer NOT NULL
+);
+
+
+ALTER TABLE public.food_menu OWNER TO nealshultz;
+
+--
+-- Name: food_menu_dishes_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE food_menu_dishes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.food_menu_dishes_id_seq OWNER TO nealshultz;
+
+--
+-- Name: food_menu_dishes; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE food_menu_dishes (
+    id integer DEFAULT nextval('food_menu_dishes_id_seq'::regclass) NOT NULL,
+    menu_id integer NOT NULL,
+    dish_id integer NOT NULL
+);
+
+
+ALTER TABLE public.food_menu_dishes OWNER TO nealshultz;
+
+--
+-- Name: registration_registrationprofile_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE registration_registrationprofile_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.registration_registrationprofile_id_seq OWNER TO nealshultz;
+
+--
+-- Name: registration_registrationprofile; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE registration_registrationprofile (
+    id integer DEFAULT nextval('registration_registrationprofile_id_seq'::regclass) NOT NULL,
+    user_id integer NOT NULL,
+    activation_key character varying(40) NOT NULL
+);
+
+
+ALTER TABLE public.registration_registrationprofile OWNER TO nealshultz;
+
+--
+-- Name: south_migrationhistory_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE south_migrationhistory_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.south_migrationhistory_id_seq OWNER TO nealshultz;
+
+--
+-- Name: south_migrationhistory; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE south_migrationhistory (
+    id integer DEFAULT nextval('south_migrationhistory_id_seq'::regclass) NOT NULL,
+    app_name character varying(255) NOT NULL,
+    migration character varying(255) NOT NULL,
+    applied timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.south_migrationhistory OWNER TO nealshultz;
+
+--
+-- Name: tastypie_apiaccess_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE tastypie_apiaccess_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tastypie_apiaccess_id_seq OWNER TO nealshultz;
+
+--
+-- Name: tastypie_apiaccess; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE tastypie_apiaccess (
+    id integer DEFAULT nextval('tastypie_apiaccess_id_seq'::regclass) NOT NULL,
+    identifier character varying(255) NOT NULL,
+    url character varying(255) NOT NULL,
+    request_method character varying(10) NOT NULL,
+    accessed bigint NOT NULL
+);
+
+
+ALTER TABLE public.tastypie_apiaccess OWNER TO nealshultz;
+
+--
+-- Name: tastypie_apikey_id_seq; Type: SEQUENCE; Schema: public; Owner: nealshultz
+--
+
+CREATE SEQUENCE tastypie_apikey_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tastypie_apikey_id_seq OWNER TO nealshultz;
+
+--
+-- Name: tastypie_apikey; Type: TABLE; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE TABLE tastypie_apikey (
+    id integer DEFAULT nextval('tastypie_apikey_id_seq'::regclass) NOT NULL,
+    user_id integer NOT NULL,
+    key character varying(256) NOT NULL,
+    created timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tastypie_apikey OWNER TO nealshultz;
+
+--
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY auth_group (id, name) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('auth_group_id_seq', 1, true);
+
+
+--
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, true);
+
+
+--
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can add permission	2	add_permission
+5	Can change permission	2	change_permission
+6	Can delete permission	2	delete_permission
+7	Can add group	3	add_group
+8	Can change group	3	change_group
+9	Can delete group	3	delete_group
+10	Can add content type	4	add_contenttype
+11	Can change content type	4	change_contenttype
+12	Can delete content type	4	delete_contenttype
+13	Can add session	5	add_session
+14	Can change session	5	change_session
+15	Can delete session	5	delete_session
+16	Can add migration history	6	add_migrationhistory
+17	Can change migration history	6	change_migrationhistory
+18	Can delete migration history	6	delete_migrationhistory
+19	Can add registration profile	7	add_registrationprofile
+20	Can change registration profile	7	change_registrationprofile
+21	Can delete registration profile	7	delete_registrationprofile
+22	Can add event type	8	add_eventtype
+23	Can change event type	8	change_eventtype
+24	Can delete event type	8	delete_eventtype
+25	Can add cuisine	9	add_cuisine
+26	Can change cuisine	9	change_cuisine
+27	Can delete cuisine	9	delete_cuisine
+28	Can add dish type	10	add_dishtype
+29	Can change dish type	10	change_dishtype
+30	Can delete dish type	10	delete_dishtype
+31	Can add dish	11	add_dish
+32	Can change dish	11	change_dish
+33	Can delete dish	11	delete_dish
+34	Can add menu	12	add_menu
+35	Can change menu	12	change_menu
+36	Can delete menu	12	delete_menu
+37	Can add chefify user	13	add_chefifyuser
+38	Can change chefify user	13	change_chefifyuser
+39	Can delete chefify user	13	delete_chefifyuser
+40	Can add chef	14	add_chef
+41	Can change chef	14	change_chef
+42	Can delete chef	14	delete_chef
+43	Can add customer	15	add_customer
+44	Can change customer	15	change_customer
+45	Can delete customer	15	delete_customer
+46	Can add location	16	add_location
+47	Can change location	16	change_location
+48	Can delete location	16	delete_location
+49	Can add appointments	17	add_appointments
+50	Can change appointments	17	change_appointments
+51	Can delete appointments	17	delete_appointments
+52	Can add api access	18	add_apiaccess
+53	Can change api access	18	change_apiaccess
+54	Can delete api access	18	delete_apiaccess
+55	Can add api key	19	add_apikey
+56	Can change api key	19	change_apikey
+57	Can delete api key	19	delete_apikey
+\.
+
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('auth_permission_id_seq', 58, true);
+
+
+--
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY django_admin_log (id, action_time, user_id, content_type_id, object_id, object_repr, action_flag, change_message) FROM stdin;
+1	2014-03-18 00:06:39	2	14	2	test	1	
+2	2014-03-18 00:07:26	2	13	3	new-customer	1	
+3	2014-03-18 00:07:54	2	15	1	new-customer	1	
+4	2014-03-18 00:12:14	2	13	2	test	2	Changed first_name, last_name and email.
+5	2014-03-18 00:57:47	2	13	4	test2	1	
+6	2014-03-18 01:17:33	2	8	1	Dinner Party	1	
+7	2014-03-18 01:19:23	2	9	1	Italian	1	
+8	2014-03-18 01:19:46	2	10	1	Entree	1	
+11	2014-03-18 01:20:46	2	11	3	Meatballs, Entree, Italian	1	
+12	2014-03-18 01:20:50	2	12	1	Italian <django.db.models.fields.related.ManyRelatedManager object at 0x10fdb6dd0>	1	
+13	2014-03-18 03:19:19	2	9	2	New American	1	
+14	2014-03-18 03:20:29	2	10	2	Entree	1	
+15	2014-03-18 03:20:37	2	11	4	Seared Ahi Tuna with Avocado, Entree, New American	1	
+18	2014-03-18 03:34:21	2	11	5	Seared Ahi Tuna with Avocado, Entree, New American	1	
+20	2014-03-18 03:35:33	2	11	6	tuna, Entree, New American	1	
+22	2014-03-18 03:35:50	2	13	7	Greg_Danko	1	
+23	2014-03-18 03:37:10	2	14	3	Greg_Danko	1	
+24	2014-03-18 21:05:58	2	13	8	Charles_Phan	1	
+25	2014-03-18 21:06:23	2	14	4	Charles_Phan	1	
+26	2014-03-18 21:07:18	2	13	9	Richard_Reddington	1	
+27	2014-03-18 21:07:48	2	14	5	Richard_Reddington	1	
+28	2014-03-18 21:08:38	2	13	10	Loretta_Keller	1	
+29	2014-03-18 21:09:03	2	14	6	Loretta_Keller	1	
+30	2014-03-18 21:10:06	2	13	11	Corey_Lee	1	
+31	2014-03-18 21:10:32	2	14	7	Corey_Lee	1	
+32	2014-03-18 21:11:28	2	13	12	Antonio_Flores_Lopez	1	
+33	2014-03-18 21:11:49	2	14	8	Antonio_Flores_Lopez	1	
+34	2014-03-18 21:12:06	2	9	3	Greek	1	
+35	2014-03-18 21:12:21	2	9	4	Pan-Latin	1	
+36	2014-03-18 21:13:09	2	9	5	French	1	
+37	2014-03-18 21:13:18	2	9	6	Mexican	1	
+38	2014-03-18 21:13:26	2	9	7	Spanish	1	
+39	2014-03-18 21:13:38	2	9	8	Vietnamese	1	
+40	2014-03-18 21:13:42	2	9	9	Chinese	1	
+41	2014-03-18 21:13:54	2	9	10	Japanese	1	
+42	2014-03-18 21:15:52	2	9	11	Peruvian	1	
+43	2014-03-18 21:15:59	2	9	12	Californian	1	
+44	2014-03-18 21:16:34	2	13	13	Desmond_Echavarrie	1	
+45	2014-03-18 21:16:56	2	14	9	Desmond_Echavarrie	1	
+46	2014-03-19 17:45:13	2	10	3	appetizer	1	
+47	2014-03-19 17:45:25	2	10	4	Desert	1	
+48	2014-03-19 17:45:33	2	10	3	Appetizer	2	Changed name.
+49	2014-03-21 01:02:21	16	14	2	test	2	Changed restaurant and cuisine.
+50	2014-03-22 19:52:08	16	14	9	Desmond_Echavarrie	2	Changed cuisine.
+51	2014-03-22 19:52:18	16	14	4	Charles_Phan	2	Changed cuisine.
+52	2014-03-22 19:52:26	16	14	8	Antonio_Flores_Lopez	2	Changed cuisine.
+53	2014-03-22 19:52:30	16	14	8	Antonio_Flores_Lopez	2	No fields changed.
+54	2014-03-22 19:52:33	16	14	7	Corey_Lee	2	Changed cuisine.
+55	2014-03-22 19:52:37	16	14	7	Corey_Lee	2	No fields changed.
+56	2014-03-22 19:52:41	16	14	6	Loretta_Keller	2	Changed cuisine.
+57	2014-03-22 19:52:46	16	14	5	Richard_Reddington	2	Changed cuisine.
+58	2014-03-22 19:52:51	16	14	4	Charles_Phan	2	No fields changed.
+59	2014-03-22 20:45:55	16	14	9	Desmond_Echavarrie	2	No fields changed.
+60	2014-03-22 20:51:52	16	14	10	chef1	1	
+61	2014-03-22 21:28:07	16	14	3	Greg_Danko	3	
+62	2014-03-22 21:28:22	16	13	7	Greg_Danko	3	
+63	2014-03-22 21:28:56	16	13	20	Greg_Danko	1	
+64	2014-03-22 21:30:25	16	13	20	Greg_Danko	3	
+65	2014-03-22 21:32:32	16	14	11	Gary_Danko	1	
+66	2014-03-22 21:34:10	16	13	21	Gary_Danko	2	Changed is_chef.
+67	2014-03-24 04:53:31	16	8	2	Business Function	1	
+68	2014-03-24 04:54:02	16	8	3	Culinary Lesson	1	
+69	2014-03-24 16:33:23	16	14	5	Richard_Reddington	3	
+70	2014-03-24 16:34:33	16	13	22	Richard_Reddington_1	1	
+71	2014-03-24 16:35:07	16	13	23	new_customer	1	
+72	2014-03-24 16:35:47	16	13	9	Richard_Reddington	3	
+73	2014-03-24 20:25:34	16	11	7	Seared Ahi Tuna, Entree, New American	1	
+74	2014-03-24 20:27:14	16	12	2	New American	1	
+75	2014-03-24 20:27:16	16	12	2	New American	2	No fields changed.
+76	2014-03-24 20:27:33	16	12	2	New American	2	Changed dishes.
+77	2014-03-24 20:38:25	16	17	10	new-customer: Dinner Party	1	
+78	2014-03-24 20:49:29	16	17	13	user1: Dinner Party	2	Changed customer.
+79	2014-03-25 20:58:26	16	17	16	user1: Business Function	3	
+80	2014-03-25 20:58:32	16	17	15	user1: Dinner Party	3	
+81	2014-03-25 20:59:08	16	17	14	Gary_Danko: Dinner Party	3	
+82	2014-03-25 20:59:08	16	17	13	user1: Dinner Party	3	
+83	2014-03-25 20:59:08	16	17	12	Gary_Danko: Dinner Party	3	
+84	2014-03-25 20:59:08	16	17	11	Gary_Danko: Dinner Party	3	
+85	2014-03-25 20:59:08	16	17	10	new-customer: Dinner Party	3	
+86	2014-03-25 20:59:08	16	17	9	test3: Dinner Party	3	
+87	2014-03-25 20:59:08	16	17	8	test3: Dinner Party	3	
+88	2014-03-25 20:59:08	16	17	7	test3: Dinner Party	3	
+89	2014-03-25 20:59:08	16	17	5	test3: Dinner Party	3	
+90	2014-03-25 20:59:08	16	17	4	test3: Dinner Party	3	
+91	2014-03-25 20:59:08	16	17	3	test3: Dinner Party	3	
+92	2014-03-25 20:59:08	16	17	2	test3: Dinner Party	3	
+93	2014-03-25 20:59:08	16	17	1	test3: Dinner Party	3	
+94	2014-03-26 06:01:07	16	14	10	chef1	3	
+95	2014-03-26 06:01:07	16	14	2	test	3	
+96	2014-03-26 23:07:46	16	17	20	user1: Dinner Party	3	
+97	2014-03-26 23:07:46	16	17	19	user1: Business Function	3	
+98	2014-03-26 23:07:46	16	17	18	user1: Dinner Party	3	
+99	2014-03-26 23:07:46	16	17	17	user1: Dinner Party	3	
+100	2014-03-27 15:01:16	16	17	29	user1: Dinner Party	3	
+101	2014-03-27 15:01:16	16	17	28	user1: Culinary Lesson	3	
+102	2014-03-27 15:01:16	16	17	27	user1: Dinner Party	3	
+103	2014-03-27 15:01:16	16	17	26	user1: Dinner Party	3	
+104	2014-03-27 15:01:16	16	17	25	user1: Dinner Party	3	
+105	2014-03-27 15:01:16	16	17	24	user1: Dinner Party	3	
+106	2014-03-27 15:01:16	16	17	23	user1: Dinner Party	3	
+107	2014-03-27 15:01:16	16	17	22	Antonio_Flores_Lopez: Dinner Party	3	
+108	2014-03-27 15:01:16	16	17	21	user1: Dinner Party	3	
+109	2014-03-27 16:27:49	16	17	31	user1: Dinner Party	3	
+110	2014-03-27 16:27:49	16	17	30	user1: Dinner Party	3	
+111	2014-03-27 16:29:48	16	17	32	user1: Dinner Party	3	
+112	2014-03-27 16:55:30	16	17	33	nj-bay: Dinner Party	3	
+113	2014-03-27 16:56:33	16	17	34	user1: Dinner Party	3	
+114	2014-03-27 16:57:40	16	17	35	user1: Dinner Party	3	
+\.
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('django_admin_log_id_seq', 115, true);
+
+
+--
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY django_content_type (id, name, app_label, model) FROM stdin;
+1	log entry	admin	logentry
+2	permission	auth	permission
+3	group	auth	group
+4	content type	contenttypes	contenttype
+5	session	sessions	session
+6	migration history	south	migrationhistory
+7	registration profile	registration	registrationprofile
+8	event type	food	eventtype
+9	cuisine	food	cuisine
+10	dish type	food	dishtype
+11	dish	food	dish
+12	menu	food	menu
+13	chefify user	food	chefifyuser
+14	chef	food	chef
+15	customer	food	customer
+16	location	food	location
+17	appointments	food	appointments
+18	api access	tastypie	apiaccess
+19	api key	tastypie	apikey
+\.
+
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('django_content_type_id_seq', 20, true);
+
+
+--
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY django_session (session_key, session_data, expire_date) FROM stdin;
+1yg9x9n0m331pq970b0wezqq7737ycii	MjhlM2E3NjhjOWMzODExNTkwYzMxNmZiMWVmN2IyNzI1ZGY1Yzg4Mzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MTJ9	2014-04-07 23:58:59
+7ptz3mcva76ihquje3r9epj0mwoajz0z	MjhlM2E3NjhjOWMzODExNTkwYzMxNmZiMWVmN2IyNzI1ZGY1Yzg4Mzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MTJ9	2014-04-30 21:24:05
+83at88lfxp80dbg1rbr6x8bbj9ymwowc	NjMxYWMxZmJhMGNlYTU2ZTAwYTA1NTA1ZGJjYTI4YzFhMzVkZmMwNTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MTd9	2014-04-10 04:58:44
+al6mgibzuratchiksnbhwyuu6y8eta7z	MjhlM2E3NjhjOWMzODExNTkwYzMxNmZiMWVmN2IyNzI1ZGY1Yzg4Mzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MTJ9	2014-04-10 16:28:48
+rlfs77xg19eivo2v4stphdvlqhhegaom	MjhlM2E3NjhjOWMzODExNTkwYzMxNmZiMWVmN2IyNzI1ZGY1Yzg4Mzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MTJ9	2014-06-03 22:34:01
+slum8nhsox6yh9cgyd8j1czucmsfxpv3	Y2YwYTI3YjJiMWI4NDc3MDQ0Njg0MTZkYzgyZjQxNzliYzE1YTZmMzp7fQ==	2014-04-10 15:10:59
+wexdrqphd1och5di7kfi0vne6vmflu1o	NGMwMDIwMzY0ZTdmMTY2YmY4NjZkMDgwNzc1ZjQ5MTAwZGVkM2E0Zjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MjF9	2014-04-05 21:59:23
+x43a9xfi1pgxbq7yfzfdr2hoyxvg8c85	MjhlM2E3NjhjOWMzODExNTkwYzMxNmZiMWVmN2IyNzI1ZGY1Yzg4Mzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MTJ9	2014-04-10 21:59:04
+c1avdsu6qbsp0sb887qc9fz332fzszh4	Y2YwYTI3YjJiMWI4NDc3MDQ0Njg0MTZkYzgyZjQxNzliYzE1YTZmMzp7fQ==	2014-06-09 01:27:58.044628
+\.
+
+
+--
+-- Data for Name: food_appointments; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_appointments (id, chef_id, customer_id, ratings, start_time, end_time, number_of_guests, event_type_id, has_menu, menu_id, location_id, status) FROM stdin;
+36	8	13	\N	2014-02-27 08:00:00	2014-02-28 08:00:00	7	1	f	\N	\N	PE
+37	8	13	\N	2014-02-27 08:00:00	2014-02-28 08:00:00	7	1	f	\N	\N	PE
+38	8	14	\N	2014-02-27 08:00:00	2014-02-28 08:00:00	7	1	f	\N	\N	PE
+39	8	14	\N	2014-02-27 08:00:00	2014-02-28 08:00:00	7	1	f	\N	\N	PE
+\.
+
+
+--
+-- Name: food_appointments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_appointments_id_seq', 40, true);
+
+
+--
+-- Data for Name: food_chef; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_chef (id, chefify_user_id, price_minimum, price_maximum, has_equipment, equipment_charge, travel_radius, restaurant) FROM stdin;
+4	8	500.00	0.00	f	30	30	The Slanted Door
+6	10	200.00	0.00	f	20	50	 COCO500
+7	11	700.00	0.00	f	50	30	 Benu
+8	12	400.00	0.00	f	40	40	Cascal
+9	13	1000.00	0.00	f	70	60	French Laundry
+11	21	700.00	0.00	f	15	30	French Laundry
+\.
+
+
+--
+-- Data for Name: food_chef_cuisine; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_chef_cuisine (id, chef_id, cuisine_id) FROM stdin;
+5	8	1
+7	7	2
+8	6	1
+10	4	8
+11	9	4
+13	11	2
+\.
+
+
+--
+-- Name: food_chef_cuisine_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_chef_cuisine_id_seq', 14, true);
+
+
+--
+-- Name: food_chef_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_chef_id_seq', 12, true);
+
+
+--
+-- Data for Name: food_chefifyuser; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_chefifyuser (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined, menu_id, is_chef, location_id) FROM stdin;
+2	pbkdf2_sha256$12000$utEWQp0YL9Yx$V3lTuPIAJlK4SyUjB91tpnJtNx4Z9Duwwq4VOhWIBzs=	2014-03-21 01:02:43	t	test	Awesome	Chef	awesome@chef.com	t	t	2014-03-18 00:05:30	\N	t	\N
+3	test	2014-03-18 00:07:13	f	new-customer	New	Customer		f	t	2014-03-18 00:07:13	\N	f	\N
+4	test	2014-03-18 00:57:30	f	test2				f	t	2014-03-18 00:57:30	\N	f	\N
+6	pbkdf2_sha256$12000$B1TWqZmf3pI0$ERIypgdn6DhD9qjVYWhVcsPt8UpxAf1+fHH3F4OgXUE=	2014-03-18 01:06:43	f	test3			test@test.com	f	t	2014-03-18 01:04:22	\N	f	\N
+8	Charles_Phan	2014-03-18 21:05:01	f	Charles_Phan	Charles	Phan	Charles_Phan@gmail.com	f	t	2014-03-18 21:05:01	\N	t	\N
+10	Loretta_Keller	2014-03-18 21:08:02	f	Loretta_Keller	Loretta	Keller	Loretta_Keller@gmail.com	f	t	2014-03-18 21:08:02	\N	t	\N
+11	Corey_Lee 	2014-03-18 21:09:16	f	Corey_Lee	Corey	Lee	Corey_Lee@gmail.com	f	t	2014-03-18 21:09:16	\N	t	\N
+13	Desmond_Echavarrie	2014-03-18 21:16:10	f	Desmond_Echavarrie	Desmond	Echavarrie	Desmond_Echavarrie@gmail.com	f	t	2014-03-18 21:16:10	\N	t	\N
+14	pbkdf2_sha256$12000$cDF9Ap7VyTYc$wFPfSCFEGoclFEQAM2swcZkdiCWxavhkThI04Jv4wGU=	2014-03-20 00:51:04	f	test4			nealshultz@sda.gsf	f	t	2014-03-20 00:51:04	\N	f	\N
+15	pbkdf2_sha256$12000$2Aj1q2Tmbt3V$JUSsNNDZFUGKErfcURUCByJlmqDa//jIEahPPzUljmk=	2014-03-20 23:25:19	f	test5			test5@sda.gsf	f	t	2014-03-20 21:09:57	\N	f	\N
+16	pbkdf2_sha256$12000$WFzOVAcnF5t2$h5OMru74lYjn/0dSynbDYPEkMmR5E+7ssuZk30VPTU8=	2014-03-27 17:03:50	t	nj-bay			neal.jacob.415@gmail.com	t	t	2014-03-20 21:20:59	\N	f	\N
+17	pbkdf2_sha256$12000$b2N7fjAp6qGh$UhtMcC7zsLST4FFmk/QoBkkHwAZvFZtOo7gjLPmAFAg=	2014-03-27 21:53:06	f	user1			user1@sda.gsf	f	t	2014-03-22 20:50:33	\N	f	\N
+18	pbkdf2_sha256$12000$vPdCbNy5Xom5$Gx0J0+db3GJsSQHWImbMhjA4TWeNqtRrC8KagfC4RMk=	2014-03-22 20:55:21	f	chef1			chef1@sda.gsf	f	t	2014-03-22 20:51:10	\N	t	\N
+21	pbkdf2_sha256$12000$t39aUgJn1SjS$c0jJDjn/4Ce3mnpgXL6euVWObAObkcuOcv1bmy7FFZ0=	2014-03-24 16:45:01	f	Gary_Danko			Gary_Danko@sda.gsf	f	t	2014-03-22 21:30:58	\N	t	\N
+22	Richard_Reddington	2014-03-24 16:33:27	f	Richard_Reddington_1	Richard	Reddington	Richard_Reddington@gmail.com	f	t	2014-03-24 16:33:27	\N	t	\N
+23	new_customer	2014-03-24 16:34:37	f	new_customer	new_	customer	new_customer@gmail.com	f	t	2014-03-24 16:34:37	\N	f	\N
+25	pbkdf2_sha256$12000$KOG5DothmNyF$SWdeb1yYeam59gu9eQexC6PX4eQLR5tAckPTyJ9qiSQ=	2014-03-24 16:44:15	f	new_customer_1			new_customer@gmail.copm	f	t	2014-03-24 16:44:14	\N	f	\N
+12	pbkdf2_sha256$12000$ujsUXPllgaEO$8MsLm8+CxRfpqxHcuwBbRieC5E+IDH4fkmTIvSICuT4=	2014-05-26 01:27:18.911032	f	Antonio_Flores_Lopez	Antonio Flores	Lopez	Antonio_Flores_Lopez@gmail.com	f	t	2014-03-18 21:10:44	\N	t	\N
+\.
+
+
+--
+-- Data for Name: food_chefifyuser_groups; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_chefifyuser_groups (id, chefifyuser_id, group_id) FROM stdin;
+\.
+
+
+--
+-- Name: food_chefifyuser_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_chefifyuser_groups_id_seq', 1, true);
+
+
+--
+-- Name: food_chefifyuser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_chefifyuser_id_seq', 26, true);
+
+
+--
+-- Data for Name: food_chefifyuser_user_permissions; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_chefifyuser_user_permissions (id, chefifyuser_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: food_chefifyuser_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_chefifyuser_user_permissions_id_seq', 1, true);
+
+
+--
+-- Data for Name: food_cuisine; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_cuisine (id, type) FROM stdin;
+1	Italian
+2	New American
+3	Greek
+4	Pan-Latin
+5	French
+6	Mexican
+7	Spanish
+8	Vietnamese
+9	Chinese
+10	Japanese
+11	Peruvian
+12	Californian
+\.
+
+
+--
+-- Name: food_cuisine_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_cuisine_id_seq', 13, true);
+
+
+--
+-- Data for Name: food_customer; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_customer (id, chefify_user_id) FROM stdin;
+1	3
+2	4
+3	6
+5	8
+7	10
+8	11
+9	12
+10	13
+11	14
+12	15
+13	16
+14	17
+15	18
+17	21
+18	22
+19	23
+20	25
+\.
+
+
+--
+-- Name: food_customer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_customer_id_seq', 21, true);
+
+
+--
+-- Data for Name: food_dish; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_dish (id, name, type_id, cuisine_id) FROM stdin;
+3	Meatballs	1	1
+4	Seared Ahi Tuna with Avocado	2	2
+5	Seared Ahi Tuna with Avocado	2	2
+6	tuna	2	2
+7	Seared Ahi Tuna	1	2
+\.
+
+
+--
+-- Name: food_dish_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_dish_id_seq', 8, true);
+
+
+--
+-- Data for Name: food_dishtype; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_dishtype (id, name) FROM stdin;
+1	Entree
+2	Entree
+3	Appetizer
+4	Desert
+\.
+
+
+--
+-- Name: food_dishtype_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_dishtype_id_seq', 5, true);
+
+
+--
+-- Data for Name: food_eventtype; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_eventtype (id, type) FROM stdin;
+1	Dinner Party
+2	Business Function
+3	Culinary Lesson
+\.
+
+
+--
+-- Name: food_eventtype_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_eventtype_id_seq', 4, true);
+
+
+--
+-- Data for Name: food_location; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_location (id, address, city, state, zip_code, latitude, longitude) FROM stdin;
+1	225 bush	san francisco	california	94101	\N	\N
+2	225 Bush street	San Francisco	CA	94104	\N	\N
+3	234 4th st	san francisco	ca	94103	\N	\N
+\.
+
+
+--
+-- Name: food_location_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_location_id_seq', 4, true);
+
+
+--
+-- Data for Name: food_menu; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_menu (id, cuisine_id) FROM stdin;
+1	1
+2	2
+\.
+
+
+--
+-- Data for Name: food_menu_dishes; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY food_menu_dishes (id, menu_id, dish_id) FROM stdin;
+1	1	3
+4	2	7
+\.
+
+
+--
+-- Name: food_menu_dishes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_menu_dishes_id_seq', 5, true);
+
+
+--
+-- Name: food_menu_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('food_menu_id_seq', 3, true);
+
+
+--
+-- Data for Name: registration_registrationprofile; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY registration_registrationprofile (id, user_id, activation_key) FROM stdin;
+\.
+
+
+--
+-- Name: registration_registrationprofile_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('registration_registrationprofile_id_seq', 1, true);
+
+
+--
+-- Data for Name: south_migrationhistory; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY south_migrationhistory (id, app_name, migration, applied) FROM stdin;
+1	food	0001_initial	2014-03-18 00:03:31
+2	tastypie	0001_initial	2014-03-18 00:03:31
+3	tastypie	0002_add_apikey_index	2014-03-18 00:03:31
+4	food	0002_auto__add_field_chef_name	2014-03-18 03:15:15
+5	food	0003_auto__del_field_chef_name__add_field_chef_restaurant	2014-03-18 03:16:35
+6	food	0004_auto	2014-03-18 21:52:05
+7	food	0005_auto__chg_field_appointments_menu	2014-03-19 22:36:08
+8	food	0006_auto__chg_field_appointments_location	2014-03-19 22:37:28
+9	food	0007_auto__chg_field_appointments_status	2014-03-22 18:54:16
+10	food	0008_auto__add_field_chefifyuser_is_chef	2014-03-22 21:13:03
+11	food	0009_auto__del_field_appointments_status	2014-03-22 22:11:36
+12	food	0010_auto__add_field_appointments_status	2014-03-22 22:12:06
+13	food	0011_auto__add_field_chefifyuser_location	2014-03-26 22:26:09
+\.
+
+
+--
+-- Name: south_migrationhistory_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('south_migrationhistory_id_seq', 14, true);
+
+
+--
+-- Data for Name: tastypie_apiaccess; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY tastypie_apiaccess (id, identifier, url, request_method, accessed) FROM stdin;
+\.
+
+
+--
+-- Name: tastypie_apiaccess_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('tastypie_apiaccess_id_seq', 1, true);
+
+
+--
+-- Data for Name: tastypie_apikey; Type: TABLE DATA; Schema: public; Owner: nealshultz
+--
+
+COPY tastypie_apikey (id, user_id, key, created) FROM stdin;
+\.
+
+
+--
+-- Name: tastypie_apikey_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nealshultz
+--
+
+SELECT pg_catalog.setval('tastypie_apikey_id_seq', 1, true);
+
+
+--
+-- Name: auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY django_session
+    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+
+
+--
+-- Name: food_appointments_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_appointments
+    ADD CONSTRAINT food_appointments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_chef_cuisine_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_chef_cuisine
+    ADD CONSTRAINT food_chef_cuisine_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_chef_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_chef
+    ADD CONSTRAINT food_chef_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_chefifyuser_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_chefifyuser_groups
+    ADD CONSTRAINT food_chefifyuser_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_chefifyuser_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_chefifyuser
+    ADD CONSTRAINT food_chefifyuser_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_chefifyuser_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_chefifyuser_user_permissions
+    ADD CONSTRAINT food_chefifyuser_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_cuisine_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_cuisine
+    ADD CONSTRAINT food_cuisine_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_customer_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_customer
+    ADD CONSTRAINT food_customer_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_dish_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_dish
+    ADD CONSTRAINT food_dish_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_dishtype_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_dishtype
+    ADD CONSTRAINT food_dishtype_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_eventtype_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_eventtype
+    ADD CONSTRAINT food_eventtype_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_location_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_location
+    ADD CONSTRAINT food_location_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_menu_dishes_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_menu_dishes
+    ADD CONSTRAINT food_menu_dishes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: food_menu_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY food_menu
+    ADD CONSTRAINT food_menu_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: registration_registrationprofile_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY registration_registrationprofile
+    ADD CONSTRAINT registration_registrationprofile_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: south_migrationhistory_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY south_migrationhistory
+    ADD CONSTRAINT south_migrationhistory_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tastypie_apiaccess_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY tastypie_apiaccess
+    ADD CONSTRAINT tastypie_apiaccess_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tastypie_apikey_pkey; Type: CONSTRAINT; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+ALTER TABLE ONLY tastypie_apikey
+    ADD CONSTRAINT tastypie_apikey_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: app_label; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX app_label ON django_content_type USING btree (app_label, model);
+
+
+--
+-- Name: auth_group_permissions_5f412f9a; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX auth_group_permissions_5f412f9a ON auth_group_permissions USING btree (group_id);
+
+
+--
+-- Name: auth_group_permissions_83d7f98b; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX auth_group_permissions_83d7f98b ON auth_group_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_permission_37ef4eb4; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX auth_permission_37ef4eb4 ON auth_permission USING btree (content_type_id);
+
+
+--
+-- Name: chefify_user_id; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX chefify_user_id ON food_customer USING btree (chefify_user_id);
+
+
+--
+-- Name: content_type_id; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX content_type_id ON auth_permission USING btree (content_type_id, codename);
+
+
+--
+-- Name: django_admin_log_37ef4eb4; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX django_admin_log_37ef4eb4 ON django_admin_log USING btree (content_type_id);
+
+
+--
+-- Name: django_admin_log_6340c63c; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX django_admin_log_6340c63c ON django_admin_log USING btree (user_id);
+
+
+--
+-- Name: django_session_b7b81f0c; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX django_session_b7b81f0c ON django_session USING btree (expire_date);
+
+
+--
+-- Name: food_appointments_08fd5523; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_appointments_08fd5523 ON food_appointments USING btree (menu_id);
+
+
+--
+-- Name: food_appointments_09847825; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_appointments_09847825 ON food_appointments USING btree (customer_id);
+
+
+--
+-- Name: food_appointments_3120f0b2; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_appointments_3120f0b2 ON food_appointments USING btree (event_type_id);
+
+
+--
+-- Name: food_appointments_afbb987d; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_appointments_afbb987d ON food_appointments USING btree (location_id);
+
+
+--
+-- Name: food_appointments_c29cbfcd; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_appointments_c29cbfcd ON food_appointments USING btree (chef_id);
+
+
+--
+-- Name: food_chef_cuisine_9b2448f6; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_chef_cuisine_9b2448f6 ON food_chef_cuisine USING btree (cuisine_id);
+
+
+--
+-- Name: food_chef_cuisine_c29cbfcd; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_chef_cuisine_c29cbfcd ON food_chef_cuisine USING btree (chef_id);
+
+
+--
+-- Name: food_chef_cuisine_chef_id_3e3c3e34d93fae1a_uniq; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX food_chef_cuisine_chef_id_3e3c3e34d93fae1a_uniq ON food_chef_cuisine USING btree (chef_id, cuisine_id);
+
+
+--
+-- Name: food_chefifyuser_08fd5523; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_chefifyuser_08fd5523 ON food_chefifyuser USING btree (menu_id);
+
+
+--
+-- Name: food_chefifyuser_afbb987d; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_chefifyuser_afbb987d ON food_chefifyuser USING btree (location_id);
+
+
+--
+-- Name: food_chefifyuser_groups_55f855e0; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_chefifyuser_groups_55f855e0 ON food_chefifyuser_groups USING btree (chefifyuser_id);
+
+
+--
+-- Name: food_chefifyuser_groups_5f412f9a; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_chefifyuser_groups_5f412f9a ON food_chefifyuser_groups USING btree (group_id);
+
+
+--
+-- Name: food_chefifyuser_groups_chefifyuser_id_275248689ef0275c_uniq; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX food_chefifyuser_groups_chefifyuser_id_275248689ef0275c_uniq ON food_chefifyuser_groups USING btree (chefifyuser_id, group_id);
+
+
+--
+-- Name: food_chefifyuser_user_perm_chefifyuser_id_68bbe167e88be039_uniq; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX food_chefifyuser_user_perm_chefifyuser_id_68bbe167e88be039_uniq ON food_chefifyuser_user_permissions USING btree (chefifyuser_id, permission_id);
+
+
+--
+-- Name: food_chefifyuser_user_permissions_55f855e0; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_chefifyuser_user_permissions_55f855e0 ON food_chefifyuser_user_permissions USING btree (chefifyuser_id);
+
+
+--
+-- Name: food_chefifyuser_user_permissions_83d7f98b; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_chefifyuser_user_permissions_83d7f98b ON food_chefifyuser_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: food_dish_403d8ff3; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_dish_403d8ff3 ON food_dish USING btree (type_id);
+
+
+--
+-- Name: food_dish_9b2448f6; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_dish_9b2448f6 ON food_dish USING btree (cuisine_id);
+
+
+--
+-- Name: food_menu_9b2448f6; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_menu_9b2448f6 ON food_menu USING btree (cuisine_id);
+
+
+--
+-- Name: food_menu_dishes_08fd5523; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_menu_dishes_08fd5523 ON food_menu_dishes USING btree (menu_id);
+
+
+--
+-- Name: food_menu_dishes_5c7eddd5; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE INDEX food_menu_dishes_5c7eddd5 ON food_menu_dishes USING btree (dish_id);
+
+
+--
+-- Name: food_menu_dishes_menu_id_18a89ef38901400e_uniq; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX food_menu_dishes_menu_id_18a89ef38901400e_uniq ON food_menu_dishes USING btree (menu_id, dish_id);
+
+
+--
+-- Name: group_id; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX group_id ON auth_group_permissions USING btree (group_id, permission_id);
+
+
+--
+-- Name: name; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX name ON auth_group USING btree (name);
+
+
+--
+-- Name: user_id; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX user_id ON tastypie_apikey USING btree (user_id);
+
+
+--
+-- Name: username; Type: INDEX; Schema: public; Owner: nealshultz; Tablespace: 
+--
+
+CREATE UNIQUE INDEX username ON food_chefifyuser USING btree (username);
+
+
+--
+-- Name: auth_group_permissions_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_fkey FOREIGN KEY (group_id) REFERENCES auth_group(id);
+
+
+--
+-- Name: auth_group_permissions_permission_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_permission_id_fkey FOREIGN KEY (permission_id) REFERENCES auth_permission(id);
+
+
+--
+-- Name: auth_permission_content_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_fkey FOREIGN KEY (content_type_id) REFERENCES django_content_type(id);
+
+
+--
+-- Name: django_admin_log_content_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_content_type_id_fkey FOREIGN KEY (content_type_id) REFERENCES django_content_type(id);
+
+
+--
+-- Name: food_appointments_chef_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_appointments
+    ADD CONSTRAINT food_appointments_chef_id_fkey FOREIGN KEY (chef_id) REFERENCES food_chef(id);
+
+
+--
+-- Name: food_appointments_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_appointments
+    ADD CONSTRAINT food_appointments_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES food_customer(id);
+
+
+--
+-- Name: food_appointments_event_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_appointments
+    ADD CONSTRAINT food_appointments_event_type_id_fkey FOREIGN KEY (event_type_id) REFERENCES food_eventtype(id);
+
+
+--
+-- Name: food_appointments_location_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_appointments
+    ADD CONSTRAINT food_appointments_location_id_fkey FOREIGN KEY (location_id) REFERENCES food_location(id);
+
+
+--
+-- Name: food_appointments_menu_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_appointments
+    ADD CONSTRAINT food_appointments_menu_id_fkey FOREIGN KEY (menu_id) REFERENCES food_menu(id);
+
+
+--
+-- Name: food_chef_chefify_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chef
+    ADD CONSTRAINT food_chef_chefify_user_id_fkey FOREIGN KEY (chefify_user_id) REFERENCES food_chefifyuser(id);
+
+
+--
+-- Name: food_chef_cuisine_chef_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chef_cuisine
+    ADD CONSTRAINT food_chef_cuisine_chef_id_fkey FOREIGN KEY (chef_id) REFERENCES food_chef(id);
+
+
+--
+-- Name: food_chef_cuisine_cuisine_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chef_cuisine
+    ADD CONSTRAINT food_chef_cuisine_cuisine_id_fkey FOREIGN KEY (cuisine_id) REFERENCES food_cuisine(id);
+
+
+--
+-- Name: food_chefifyuser_groups_chefifyuser_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chefifyuser_groups
+    ADD CONSTRAINT food_chefifyuser_groups_chefifyuser_id_fkey FOREIGN KEY (chefifyuser_id) REFERENCES food_chefifyuser(id);
+
+
+--
+-- Name: food_chefifyuser_groups_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chefifyuser_groups
+    ADD CONSTRAINT food_chefifyuser_groups_group_id_fkey FOREIGN KEY (group_id) REFERENCES auth_group(id);
+
+
+--
+-- Name: food_chefifyuser_location_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chefifyuser
+    ADD CONSTRAINT food_chefifyuser_location_id_fkey FOREIGN KEY (location_id) REFERENCES food_location(id);
+
+
+--
+-- Name: food_chefifyuser_menu_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chefifyuser
+    ADD CONSTRAINT food_chefifyuser_menu_id_fkey FOREIGN KEY (menu_id) REFERENCES food_menu(id);
+
+
+--
+-- Name: food_chefifyuser_user_permissions_chefifyuser_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chefifyuser_user_permissions
+    ADD CONSTRAINT food_chefifyuser_user_permissions_chefifyuser_id_fkey FOREIGN KEY (chefifyuser_id) REFERENCES food_chefifyuser(id);
+
+
+--
+-- Name: food_chefifyuser_user_permissions_permission_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_chefifyuser_user_permissions
+    ADD CONSTRAINT food_chefifyuser_user_permissions_permission_id_fkey FOREIGN KEY (permission_id) REFERENCES auth_permission(id);
+
+
+--
+-- Name: food_customer_chefify_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_customer
+    ADD CONSTRAINT food_customer_chefify_user_id_fkey FOREIGN KEY (chefify_user_id) REFERENCES food_chefifyuser(id);
+
+
+--
+-- Name: food_dish_cuisine_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_dish
+    ADD CONSTRAINT food_dish_cuisine_id_fkey FOREIGN KEY (cuisine_id) REFERENCES food_cuisine(id);
+
+
+--
+-- Name: food_dish_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_dish
+    ADD CONSTRAINT food_dish_type_id_fkey FOREIGN KEY (type_id) REFERENCES food_dishtype(id);
+
+
+--
+-- Name: food_menu_cuisine_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_menu
+    ADD CONSTRAINT food_menu_cuisine_id_fkey FOREIGN KEY (cuisine_id) REFERENCES food_cuisine(id);
+
+
+--
+-- Name: food_menu_dishes_dish_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_menu_dishes
+    ADD CONSTRAINT food_menu_dishes_dish_id_fkey FOREIGN KEY (dish_id) REFERENCES food_dish(id);
+
+
+--
+-- Name: food_menu_dishes_menu_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY food_menu_dishes
+    ADD CONSTRAINT food_menu_dishes_menu_id_fkey FOREIGN KEY (menu_id) REFERENCES food_menu(id);
+
+
+--
+-- Name: tastypie_apikey_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nealshultz
+--
+
+ALTER TABLE ONLY tastypie_apikey
+    ADD CONSTRAINT tastypie_apikey_user_id_fkey FOREIGN KEY (user_id) REFERENCES food_chefifyuser(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: nealshultz
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM nealshultz;
+GRANT ALL ON SCHEMA public TO nealshultz;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
